@@ -1,5 +1,6 @@
 import React from 'react';
+import { Wrapper } from '../../StylesComponents/Wrapper';
 
 export default function CargoDirection() {
-  return <div>CargoDirection</div>;
+  return <Wrapper>CargoDirection</Wrapper>;
 }

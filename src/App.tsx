@@ -4,17 +4,25 @@ import { Routes, Route } from 'react-router-dom';
 import Home from './Components/HomeComponent';
 import TransferCargo from './Components/TransferCargo';
 import CargoDirection from './Components/CargoDirection';
+import Header from './Components/HeaderComponent';
+import { Box, Container, CssBaseline } from '@mui/material';
 
 function App() {
   return (
     <div className="App">
-      <div>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/transfer" element={<TransferCargo />} />
-          <Route path="/direction" element={<CargoDirection />} />
-        </Routes>
-      </div>
+      <CssBaseline />
+      <Container fixed>
+        <Box sx={{ height: '100vh' }}>
+          <div>
+            <Header />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/transfer" element={<TransferCargo />} />
+              <Route path="/direction" element={<CargoDirection />} />
+            </Routes>
+          </div>
+        </Box>
+      </Container>
     </div>
   );
 }

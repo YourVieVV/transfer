@@ -1,5 +1,6 @@
 import React from 'react';
+import { Wrapper } from '../../StylesComponents/Wrapper';
 
 export default function TransferCargo() {
-  return <div>TransferCargo</div>;
+  return <Wrapper>TransferCargo</Wrapper>;
 }
