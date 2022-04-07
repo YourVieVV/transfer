@@ -29,7 +29,7 @@ export default function Header() {
                 onClick={() => navigate('transfer')}
               />
               <Tab
-                label="Редактирование грузов/направлений"
+                label="Добавление, редактирование, удаление грузов/направлений"
                 value="3"
                 onClick={() => navigate('direction')}
                 wrapped
