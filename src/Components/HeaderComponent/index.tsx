@@ -1,6 +1,5 @@
 import React from 'react';
-import Box from '@mui/material/Box';
-import Tab from '@mui/material/Tab';
+import { Box, Tab } from '@mui/material';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import { useNavigate } from 'react-router-dom';
@@ -27,12 +26,6 @@ export default function Header() {
                 label="Отправка/Приём"
                 value="2"
                 onClick={() => navigate('transfer')}
-              />
-              <Tab
-                label="Добавление, редактирование, удаление грузов/направлений"
-                value="3"
-                onClick={() => navigate('direction')}
-                wrapped
               />
             </TabList>
           </Box>

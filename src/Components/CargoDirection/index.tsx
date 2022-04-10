@@ -1,9 +1,9 @@
-import { Box, Button, Grid, Typography } from '@mui/material';
 import React from 'react';
+import { Box, Grid, Typography } from '@mui/material';
 import { UpWrapper, Wrapper } from '../../StylesComponents/Wrapper';
 import { TextColor } from '../../StylesComponents/TextColor';
-import BasicModal from '../Modals/ModalAddCargo';
 import { Item } from '../Grid/Item';
+import ModalAddCargo from '../Modals/ModalAddCargo';
 
 export default function CargoDirection() {
   return (
@@ -20,7 +20,7 @@ export default function CargoDirection() {
             </Grid>
             <Grid item xs={2}>
               <Item elevation={0}>
-                <BasicModal />
+                <ModalAddCargo />
               </Item>
             </Grid>
             <Grid item xs={5}>
@@ -39,9 +39,6 @@ export default function CargoDirection() {
             </Item>
           </Grid>
           <Grid item xs={2}>
-            <Item elevation={0}>
-              <Button variant="outlined">Добавить направление</Button>
-            </Item>
           </Grid>
           <Grid item xs={5}>
             <Item>xs=8</Item>
