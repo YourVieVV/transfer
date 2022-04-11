@@ -3,12 +3,25 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import { Alert, Box, Grid } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { Item } from '../Grid/Item';
+import { useDispatch } from 'react-redux';
+import { addInStore } from '../../redux/Action';
+import { useFormikContext } from 'formik';
 
 export default function ButtonLoading() {
   const [loading, setLoading] = useState(false);
   const [isload, setIsLoad] = useState(false);
+
+  const { values } = useFormikContext();
+
+  const dispatch = useDispatch();
+
   function handleClick() {
     setLoading(true);
+    dispatch(
+      addInStore({
+        values,
+      })
+    );
     const timer = setTimeout(() => {
       setLoading(false);
       setIsLoad(true);

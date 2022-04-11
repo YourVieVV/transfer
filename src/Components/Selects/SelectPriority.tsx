@@ -6,12 +6,16 @@ import {
   Select,
   SelectChangeEvent,
 } from '@mui/material';
+import { useFormikContext } from 'formik';
 
 export default function SelectPriority() {
   const [priority, setPriority] = useState('');
 
+  const { setFieldValue } = useFormikContext();
+
   const handleChange = (event: SelectChangeEvent) => {
     setPriority(event.target.value);
+    setFieldValue('priority', event.target.value);
   };
 
   return (
@@ -21,7 +25,7 @@ export default function SelectPriority() {
       </InputLabel>
       <Select
         labelId="demo-simple-select-standard-label"
-        id="demo-simple-select-standard"
+        name="priority"
         value={priority}
         onChange={handleChange}
         margin="dense"

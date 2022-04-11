@@ -11,11 +11,15 @@ import DirectionsBoatFilledIcon from '@mui/icons-material/DirectionsBoatFilled';
 import AirplanemodeActiveIcon from '@mui/icons-material/AirplanemodeActive';
 import DirectionsBusIcon from '@mui/icons-material/DirectionsBus';
 import DirectionsSubwayIcon from '@mui/icons-material/DirectionsSubway';
+import { useFormikContext } from 'formik';
 
 export default function SelectTransportFields() {
   const [currency, setCurrency] = React.useState('');
 
+  const { setFieldValue } = useFormikContext();
+
   const handleChange = (event: SelectChangeEvent) => {
+    setFieldValue('typeTransportation', event.target.value);
     setCurrency(event.target.value);
   };
 
@@ -38,7 +42,7 @@ export default function SelectTransportFields() {
           </InputLabel>
           <Select
             labelId="demo-simple-select-standard-label"
-            id="demo-simple-select-standard"
+            name="typeTransportation"
             value={currency}
             onChange={handleChange}
           >

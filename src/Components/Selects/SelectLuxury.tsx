@@ -8,14 +8,23 @@ import {
   FormControlLabel,
   Checkbox,
 } from '@mui/material';
+import { useFormikContext } from 'formik';
 
 export default function SelectLuxury() {
   const [luxury, setLuxury] = useState('');
   const [isLuxury, setIsLuxury] = useState(false);
 
+  const { setFieldValue } = useFormikContext();
+
   const handleChange = (event: SelectChangeEvent) => {
     setLuxury(event.target.value);
-    event.target.value == 'true' ? setIsLuxury(true) : setIsLuxury(false);
+    if (event.target.value == 'true') {
+      setIsLuxury(true);
+      setFieldValue('luxury', true);
+    } else {
+      setIsLuxury(false);
+      setFieldValue('luxury', false);
+    }
   };
 
   return (
@@ -24,8 +33,7 @@ export default function SelectLuxury() {
         Товар - роскошь?
       </InputLabel>
       <Select
-        labelId="demo-simple-select-standard-label"
-        id="demo-simple-select-standard"
+        name="luxury"
         value={luxury}
         onChange={handleChange}
         margin="dense"
