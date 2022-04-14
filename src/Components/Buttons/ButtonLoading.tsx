@@ -1,28 +1,45 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import LoadingButton from '@mui/lab/LoadingButton';
 import { Alert, Box, Grid } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { Item } from '../Grid/Item';
 import { useDispatch } from 'react-redux';
-import { addInStore } from '../../redux/Action';
+import { addInStore, editInStore } from '../../redux/Action';
 import { useFormikContext } from 'formik';
+import { v4 as uuidv4 } from 'uuid';
+import { formikTypes } from '../../redux/Types';
 
-export default function ButtonLoading() {
+interface buttonLoadingProps {
+  isEdit: boolean;
+}
+
+export const ButtonLoading: FC<buttonLoadingProps> = ({ isEdit }) => {
   const [loading, setLoading] = useState(false);
   const [isload, setIsLoad] = useState(false);
 
-  const { values } = useFormikContext();
+  const { values } = useFormikContext<formikTypes>();
 
+  const UniqueId = uuidv4();
   const dispatch = useDispatch();
 
   function handleClick() {
     setLoading(true);
-    dispatch(
-      addInStore({
-        values,
-      })
-    );
+
     const timer = setTimeout(() => {
+      if (!isEdit) {
+        values.id = UniqueId;
+        dispatch(
+          addInStore({
+            ...values,
+          })
+        );
+      } else {
+        dispatch(
+          editInStore({
+            ...values,
+          })
+        );
+      }
       setLoading(false);
       setIsLoad(true);
     }, 3000);
@@ -57,4 +74,4 @@ export default function ButtonLoading() {
       </Grid>
     </>
   );
-}
+};

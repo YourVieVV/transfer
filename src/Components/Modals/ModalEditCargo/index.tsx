@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Grid,
   TextField,
   Modal,
   Typography,
-  Button,
   Box,
   FormControl,
   Input,
@@ -21,21 +20,37 @@ import SelectPriority from '../../Selects/SelectPriority';
 import { useFormikContext } from 'formik';
 import { formikTypes } from '../../../redux/Types';
 import { modalStyle } from '../../../StylesComponents/Modals';
+import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
+import { useSelector } from 'react-redux';
 
-export default function ModalAddCargo() {
+export default function ModalEditCargo({ cargo }) {
   const [open, setOpen] = useState(false);
-  const { values, handleChange, handleBlur } =
+  const [isEdit, setIsEdit] = useState(false);
+  const { values, setFieldValue, handleChange, handleBlur } =
     useFormikContext<formikTypes>();
-  const isEdit = false;
+  const stateValues = cargo;
+  const redux = useSelector((state) => state.reducer);
+
+  const returnValues = redux.find((item) => item.id === stateValues.id);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  useEffect(() => {
+    setFieldValue('id', returnValues.id);
+    setFieldValue('nameCargo', returnValues.nameCargo);
+    setFieldValue('volume', returnValues.volume);
+    setFieldValue('weight', returnValues.weight);
+    setFieldValue('product', returnValues.product);
+    setFieldValue('price', returnValues.price);
+    setFieldValue('departure', returnValues.departure);
+    setFieldValue('arrival', returnValues.arrival);
+    setIsEdit(true);
+  }, [open]);
+
   return (
     <div>
-      <Button variant="outlined" onClick={handleOpen}>
-        Добавить грузоперевозку
-      </Button>
+      <CreateOutlinedIcon onClick={handleOpen} />
       <Modal
         open={open}
         onClose={handleClose}
@@ -45,7 +60,7 @@ export default function ModalAddCargo() {
         <Box sx={modalStyle}>
           <TextColor>
             <Typography id="modal-modal-title" variant="h5" component="h2">
-              Добавление груза
+              Изменение груза
               <CloseIcon style={{ float: 'right' }} onClick={handleClose} />
             </Typography>
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
@@ -149,7 +164,7 @@ export default function ModalAddCargo() {
               component="h2"
               sx={{ mt: 3 }}
             >
-              Добавление направления
+              Изменение направления
             </Typography>
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
               <Grid container columns={4} justifyContent="center">
@@ -191,7 +206,7 @@ export default function ModalAddCargo() {
                     <SelectPriority />
                   </Item>
                 </Grid>
-                <ButtonLoading isEdit={isEdit} />
+                <ButtonLoading isEdit={isEdit} editValues={stateValues} />
               </Grid>
             </Typography>
           </TextColor>

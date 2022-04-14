@@ -1,16 +1,25 @@
-import { ADD_IN_STORE, initialValueFormik, OUT_FROM_STORE } from './Types';
+import { ADD_IN_STORE, OUT_FROM_STORE, EDIT_IN_STORE } from './Types';
 
-const defaultState = [initialValueFormik];
+const defaultState: any = [];
 
 export const storeReduser = (state = defaultState, action) => {
   switch (action.type) {
     case ADD_IN_STORE:
-      console.log('==========>action.payload = ', action.payload);
-      console.log('==========>state = ', state);
-
       return [...state, action.payload];
     case OUT_FROM_STORE:
-      return action.payload;
+      if (state.find((el) => el.id === action.payload.id)) {
+        return state.filter((el) => el.id !== action.payload.id);
+      } else {
+        return state;
+      }
+    case EDIT_IN_STORE:
+      if (state.find((el) => el.id === action.payload.id)) {
+        return state.map((el) =>
+          el.id === action.payload.id ? action.payload : el
+        );
+      } else {
+        return state;
+      }
     default:
       return state;
   }

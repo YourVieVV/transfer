@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   InputLabel,
   FormControl,
@@ -13,9 +13,21 @@ import { useFormikContext } from 'formik';
 export default function SelectLuxury() {
   const [luxury, setLuxury] = useState('');
   const [isLuxury, setIsLuxury] = useState(false);
+  const [checked, setChecked] = useState(true);
 
   const { setFieldValue } = useFormikContext();
 
+  useEffect(() => {
+    if (checked) {
+      setFieldValue('additionalDocuments', true);
+    } else {
+      setFieldValue('additionalDocuments', false);
+    }
+  }, [luxury, checked]);
+
+  const handleChangeChecked = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setChecked(event.target.checked);
+  };
   const handleChange = (event: SelectChangeEvent) => {
     setLuxury(event.target.value);
     if (event.target.value == 'true') {
@@ -43,7 +55,13 @@ export default function SelectLuxury() {
       </Select>
       {isLuxury && (
         <FormControlLabel
-          control={<Checkbox defaultChecked />}
+          control={
+            <Checkbox
+              name="additionalDocuments"
+              checked={checked}
+              onChange={handleChangeChecked}
+            />
+          }
           disableTypography={true}
           sx={{ mt: 1, fontSize: '12px' }}
           label="Перевозка доп. документов"
