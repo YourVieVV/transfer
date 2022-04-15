@@ -5,23 +5,37 @@ import TransferCargo from './Components/TransferCargo';
 import CargoDirection from './Components/CargoDirection';
 import Header from './Components/HeaderComponent';
 import { Box, Container, CssBaseline } from '@mui/material';
+import { initialValueFormik } from './redux/Types';
+import { Formik } from 'formik';
 
 function App() {
   return (
-    <div className="App">
-      <CssBaseline />
-      <Container fixed>
-        <Box sx={{ height: '100vh' }}>
-          <div>
-            <Header />
-            <Routes>
-              <Route path="/" element={<CargoDirection />} />
-              <Route path="/transfer" element={<TransferCargo />} />
-            </Routes>
-          </div>
-        </Box>
-      </Container>
-    </div>
+    <Formik
+      initialValues={initialValueFormik}
+      onSubmit={(values, { setSubmitting }) => {
+        setTimeout(() => {
+          alert(JSON.stringify(values, null, 2));
+          setSubmitting(false);
+        }, 400);
+      }}
+    >
+      {() => (
+        <div className="App">
+          <CssBaseline />
+          <Container fixed>
+            <Box sx={{ height: '100vh' }}>
+              <div>
+                <Header />
+                <Routes>
+                  <Route path="/" element={<CargoDirection />} />
+                  <Route path="/transfer" element={<TransferCargo />} />
+                </Routes>
+              </div>
+            </Box>
+          </Container>
+        </div>
+      )}
+    </Formik>
   );
 }
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, FC } from 'react';
 import {
   Grid,
   TextField,
@@ -23,7 +23,11 @@ import { modalStyle } from '../../../StylesComponents/Modals';
 import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
 import { useSelector } from 'react-redux';
 
-export default function ModalEditCargo({ cargo }) {
+interface modalEditCargoProps {
+  cargo: formikTypes;
+}
+
+export const ModalEditCargo:FC<modalEditCargoProps> = ({ cargo }) => {
   const [open, setOpen] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const { values, setFieldValue, handleChange, handleBlur } =
@@ -50,7 +54,7 @@ export default function ModalEditCargo({ cargo }) {
 
   return (
     <div>
-      <CreateOutlinedIcon onClick={handleOpen} />
+      <CreateOutlinedIcon color="info" onClick={handleOpen} />
       <Modal
         open={open}
         onClose={handleClose}

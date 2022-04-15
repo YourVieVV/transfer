@@ -24,8 +24,7 @@ import { modalStyle } from '../../../StylesComponents/Modals';
 
 export default function ModalAddCargo() {
   const [open, setOpen] = useState(false);
-  const { values, handleChange, handleBlur } =
-    useFormikContext<formikTypes>();
+  const { values, handleChange, handleBlur } = useFormikContext<formikTypes>();
   const isEdit = false;
 
   const handleOpen = () => setOpen(true);

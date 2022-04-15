@@ -7,11 +7,12 @@ import {
   SelectChangeEvent,
 } from '@mui/material';
 import { useFormikContext } from 'formik';
+import { formikTypes } from '../../redux/Types';
 
 export default function SelectPriority() {
   const [priority, setPriority] = useState('');
 
-  const { setFieldValue } = useFormikContext();
+  const { setFieldValue } = useFormikContext<formikTypes>();
 
   const handleChange = (event: SelectChangeEvent) => {
     setPriority(event.target.value);

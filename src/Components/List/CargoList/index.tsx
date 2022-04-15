@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, FC } from 'react';
 import { Item } from '../../Grid/Item';
 import {
   Accordion,
@@ -10,26 +10,53 @@ import {
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import RestoreFromTrashOutlinedIcon from '@mui/icons-material/RestoreFromTrashOutlined';
-import { useDispatch } from 'react-redux';
-import { outFromStore } from '../../../redux/Action';
-import ModalEditCargo from '../../Modals/ModalEditCargo';
+import { useDispatch, useSelector } from 'react-redux';
+import { onMyWay, outFromStore } from '../../../redux/Action';
+import { ModalEditCargo } from '../../Modals/ModalEditCargo';
 import DirectionsBoatFilledIcon from '@mui/icons-material/DirectionsBoatFilled';
 import AirplanemodeActiveIcon from '@mui/icons-material/AirplanemodeActive';
 import DirectionsBusIcon from '@mui/icons-material/DirectionsBus';
 import DirectionsSubwayIcon from '@mui/icons-material/DirectionsSubway';
+import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
+import { formikTypes } from '../../../redux/Types';
 
-// @ts-ignore
-export const CargoList = ({ cargo }) => {
+interface cargoListProps {
+  cargo: formikTypes;
+  state?: string;
+}
+
+export const CargoList: FC<cargoListProps> = ({ cargo, state }) => {
   const [expanded, setExpanded] = useState<string | false>(false);
-
+  const redux = useSelector((state) => state.reducer);
+  const reduxValue = [...redux];
   const dispatch = useDispatch();
 
   const arrayProduct = cargo?.product.split(',');
+  const setState = state;
+  const item = { ...cargo };
 
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
     };
+
+  const handleClickOnMyWay = () => {
+    item.onMyWay = true;
+    const data = reduxValue.map((el) => {
+      if (el.id === item.id) {
+        return item;
+      } else {
+        return el;
+      }
+    });
+    dispatch(onMyWay(data));
+  };
+
+  const handleClickOutFromStore = () => {
+    const data = reduxValue.filter((i) => i.id !== item.id);
+    dispatch(outFromStore(data));
+  };
 
   return (
     <Item
@@ -42,7 +69,7 @@ export const CargoList = ({ cargo }) => {
       <Accordion
         expanded={expanded === 'panel1'}
         onChange={handleChange('panel1')}
-        sx={{ width: '90%' }}
+        sx={{ width: '80%' }}
       >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -50,23 +77,23 @@ export const CargoList = ({ cargo }) => {
           id="panel1bh-header"
         >
           <Typography sx={{ flexGrow: 2, flexShrink: 1, flexBasis: 0 }}>
-            {cargo?.nameCargo}
+            {item?.nameCargo}
           </Typography>
           <Typography sx={{ flexGrow: 1, flexShrink: 1, flexBasis: 0 }}>
-            {cargo?.volume}м³
+            {item?.volume}м³
           </Typography>
           <Typography sx={{ flexGrow: 1, flexShrink: 1, flexBasis: 0 }}>
-            {cargo?.weight}кг
+            {item?.weight}кг
           </Typography>
           <Typography sx={{ flexGrow: 3, flexShrink: 1, flexBasis: 0 }}>
-            {cargo?.departure} - {cargo?.arrival}
+            {item?.departure} - {item?.arrival}
           </Typography>
           <Typography sx={{ flexGrow: 1, flexShrink: 1, flexBasis: 0 }}>
-            {cargo?.typeTransportation === 'sea' ? (
+            {item?.typeTransportation === 'sea' ? (
               <DirectionsBoatFilledIcon color={'primary'} />
-            ) : cargo?.typeTransportation === 'air' ? (
+            ) : item?.typeTransportation === 'air' ? (
               <AirplanemodeActiveIcon color={'primary'} />
-            ) : cargo?.typeTransportation === 'bus' ? (
+            ) : item?.typeTransportation === 'bus' ? (
               <DirectionsBusIcon color={'primary'} />
             ) : (
               <DirectionsSubwayIcon color={'primary'} />
@@ -84,24 +111,32 @@ export const CargoList = ({ cargo }) => {
             })}
           </Typography>
           <Typography sx={{ flexGrow: 1, flexShrink: 1, flexBasis: 0 }}>
-            {cargo?.price}руб
+            {item?.price}руб
           </Typography>
           <Typography sx={{ flexGrow: 1, flexShrink: 1, flexBasis: 0 }}>
-            {cargo?.luxury && cargo?.additionalDocuments
+            {item?.luxury && item?.additionalDocuments
               ? 'Роскошь c доп. документами'
-              : cargo?.luxury
+              : item?.luxury
               ? 'Роскошь без доп. документов'
               : 'Не роскошь'}
           </Typography>
           <Typography sx={{ flexGrow: 1, flexShrink: 1, flexBasis: 0 }}>
-            Скорость доставки {cargo?.priority}
+            Скорость доставки {item?.priority}
           </Typography>
         </AccordionDetails>
       </Accordion>
-      <ModalEditCargo cargo={cargo} />
-      <RestoreFromTrashOutlinedIcon
-        onClick={() => dispatch(outFromStore({ ...cargo }))}
-      />
+      {setState == 'create' ? (
+        <>
+          <ModalEditCargo cargo={item} />
+          <LocalShippingIcon color="info" onClick={handleClickOnMyWay} />
+          <RestoreFromTrashOutlinedIcon
+            color="info"
+            onClick={handleClickOutFromStore}
+          />
+        </>
+      ) : (
+        <AssignmentTurnedInIcon color="info" />
+      )}
     </Item>
   );
 };

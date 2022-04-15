@@ -3,7 +3,7 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import { Alert, Box, Grid } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { Item } from '../Grid/Item';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addInStore, editInStore } from '../../redux/Action';
 import { useFormikContext } from 'formik';
 import { v4 as uuidv4 } from 'uuid';
@@ -22,6 +22,10 @@ export const ButtonLoading: FC<buttonLoadingProps> = ({ isEdit }) => {
   const UniqueId = uuidv4();
   const dispatch = useDispatch();
 
+  const redux = useSelector((state) => state.reducer);
+  const reduxValue = [...redux];
+  const item = { ...values };
+
   function handleClick() {
     setLoading(true);
 
@@ -34,11 +38,14 @@ export const ButtonLoading: FC<buttonLoadingProps> = ({ isEdit }) => {
           })
         );
       } else {
-        dispatch(
-          editInStore({
-            ...values,
-          })
-        );
+        const data = reduxValue.map((el) => {
+          if (el.id === item.id) {
+            return item;
+          } else {
+            return el;
+          }
+        });
+        dispatch(editInStore(data));
       }
       setLoading(false);
       setIsLoad(true);

@@ -1,6 +1,7 @@
 export const ADD_IN_STORE = 'ADD_IN_STORE';
 export const OUT_FROM_STORE = 'OUT_FROM_STORE';
 export const EDIT_IN_STORE = 'EDIT_IN_STORE';
+export const ON_MY_WAY = 'ON_MY_WAY';
 
 export const initialValueFormik = {
   id: '',
@@ -17,6 +18,9 @@ export const initialValueFormik = {
   priority: '',
   transportation: false,
   isEdit: false,
+  isNowCreate: true,
+  onMyWay: false,
+  inArchive: false,
 };
 
 export type formikTypes = {
@@ -34,4 +38,7 @@ export type formikTypes = {
   priority: string;
   transportation: boolean;
   isEdit: boolean;
+  isNowCreate: boolean;
+  onMyWay: boolean;
+  inArchive: boolean;
 };
