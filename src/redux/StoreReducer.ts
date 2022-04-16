@@ -3,6 +3,7 @@ import {
   OUT_FROM_STORE,
   EDIT_IN_STORE,
   ON_MY_WAY,
+  IN_ARCHIVE,
 } from './Types';
 
 const defaultState: any = [];
@@ -16,6 +17,8 @@ export const storeReduser = (state = defaultState, action) => {
     case EDIT_IN_STORE:
       return action.payload;
     case ON_MY_WAY:
+      return action.payload;
+    case IN_ARCHIVE:
       return action.payload;
     default:
       return state;

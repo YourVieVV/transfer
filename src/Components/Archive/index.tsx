@@ -3,11 +3,10 @@ import { UpWrapper, Wrapper } from '../../StylesComponents/Wrapper';
 import { Box, Grid, Typography } from '@mui/material';
 import { Item } from '../Grid/Item';
 import { TextColor } from '../../StylesComponents/TextColor';
-import ModalAddCargo from '../Modals/ModalAddCargo';
 import { CargoList } from '../List/CargoList';
 import { useSelector } from 'react-redux';
 
-export default function TransferCargo() {
+export const Archive = () => {
   const redux = useSelector((state) => state);
 
   const reduxValue = redux.reducer;
@@ -16,26 +15,21 @@ export default function TransferCargo() {
       <UpWrapper>
         <Box sx={{ flexGrow: 1 }}>
           <Grid container spacing={2} columns={10}>
-            <Grid item xs={8}>
+            <Grid item xs={10}>
               <Item elevation={0}>
                 <TextColor>
-                  <Typography variant="h4">Неотправленные грузы</Typography>
+                  <Typography variant="h4">Успешно доставленные</Typography>
                 </TextColor>
-              </Item>
-            </Grid>
-            <Grid item xs={2}>
-              <Item elevation={0}>
-                <ModalAddCargo />
               </Item>
             </Grid>
             <Grid item xs={10}>
               {reduxValue.map((cargo: any, index: number) => {
-                if (cargo.onMyWay === false && cargo.isArchive === false) {
+                if (!cargo.onMyWay && cargo.isArchive && cargo.isDone) {
                   return (
                     <CargoList
                       key={index.toString()}
                       cargo={cargo}
-                      state="create"
+                      state="archive"
                     />
                   );
                 } else {
@@ -46,6 +40,32 @@ export default function TransferCargo() {
           </Grid>
         </Box>
       </UpWrapper>
+      <Box sx={{ flexGrow: 1 }}>
+        <Grid container spacing={2} columns={10}>
+          <Grid item xs={10}>
+            <Item elevation={0}>
+              <TextColor>
+                <Typography variant="h4">Отклонены при получении</Typography>
+              </TextColor>
+            </Item>
+          </Grid>
+          <Grid item xs={10}>
+            {reduxValue.map((cargo: any, index: number) => {
+              if (!cargo.onMyWay && cargo.isArchive && !cargo.isDone) {
+                return (
+                  <CargoList
+                    key={index.toString()}
+                    cargo={cargo}
+                    state="archive"
+                  />
+                );
+              } else {
+                return null;
+              }
+            })}
+          </Grid>
+        </Grid>
+      </Box>
     </Wrapper>
   );
-}
+};

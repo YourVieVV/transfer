@@ -18,14 +18,19 @@ export default function Header() {
           <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
             <TabList onChange={handleChange} aria-label="lab API tabs example">
               <Tab
-                label="Грузы/Направления"
+                label="Отправленные"
                 value="1"
                 onClick={() => navigate('/')}
               />
               <Tab
-                label="Отправка/Приём"
+                label="Создание/Отправка"
                 value="2"
                 onClick={() => navigate('transfer')}
+              />
+              <Tab
+                label="Архив"
+                value="3"
+                onClick={() => navigate('archive')}
               />
             </TabList>
           </Box>

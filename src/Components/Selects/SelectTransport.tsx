@@ -41,6 +41,7 @@ export default function SelectTransportFields() {
             Выберите тип грузоперевозки
           </InputLabel>
           <Select
+            required
             labelId="demo-simple-select-standard-label"
             name="typeTransportation"
             value={currency}

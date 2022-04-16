@@ -18,13 +18,13 @@ export default function CargoDirection() {
             <Grid item xs={8}>
               <Item elevation={0}>
                 <TextColor>
-                  <Typography variant="h4">Грузы</Typography>
+                  <Typography variant="h4">Грузы в пути</Typography>
                 </TextColor>
               </Item>
             </Grid>
             <Grid item xs={10}>
               {reduxValue.map((cargo: any, index: number) => {
-                if (cargo.onMyWay === true && cargo.inArchive === false) {
+                if (cargo.onMyWay === true && cargo.isArchive === false) {
                   return (
                     <CargoList
                       key={index.toString()}
@@ -40,21 +40,6 @@ export default function CargoDirection() {
           </Grid>
         </Box>
       </UpWrapper>
-      <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={2} columns={10}>
-          <Grid item xs={8}>
-            <Item elevation={0}>
-              <TextColor>
-                <Typography variant="h4">Направление</Typography>
-              </TextColor>
-            </Item>
-          </Grid>
-          <Grid item xs={2}></Grid>
-          <Grid item xs={5}>
-            <Item>xs=8</Item>
-          </Grid>
-        </Grid>
-      </Box>
     </Wrapper>
   );
 }

@@ -2,16 +2,17 @@ export const ADD_IN_STORE = 'ADD_IN_STORE';
 export const OUT_FROM_STORE = 'OUT_FROM_STORE';
 export const EDIT_IN_STORE = 'EDIT_IN_STORE';
 export const ON_MY_WAY = 'ON_MY_WAY';
+export const IN_ARCHIVE = 'IN_ARCHIVE';
 
 export const initialValueFormik = {
   id: '',
   nameCargo: '',
-  volume: '',
-  weight: '',
+  volume: 0,
+  weight: 0,
   product: '',
   luxury: false,
   additionalDocuments: false,
-  price: '',
+  price: 0,
   departure: '',
   arrival: '',
   typeTransportation: '',
@@ -20,7 +21,10 @@ export const initialValueFormik = {
   isEdit: false,
   isNowCreate: true,
   onMyWay: false,
-  inArchive: false,
+  isArchive: false,
+  isDone: false,
+  comment: '',
+  rating: 0,
 };
 
 export type formikTypes = {
@@ -40,5 +44,7 @@ export type formikTypes = {
   isEdit: boolean;
   isNowCreate: boolean;
   onMyWay: boolean;
-  inArchive: boolean;
+  isArchive: boolean;
+  isDone: boolean;
+  rating: number;
 };

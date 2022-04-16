@@ -27,7 +27,7 @@ interface modalEditCargoProps {
   cargo: formikTypes;
 }
 
-export const ModalEditCargo:FC<modalEditCargoProps> = ({ cargo }) => {
+export const ModalEditCargo: FC<modalEditCargoProps> = ({ cargo }) => {
   const [open, setOpen] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const { values, setFieldValue, handleChange, handleBlur } =
@@ -72,6 +72,7 @@ export const ModalEditCargo:FC<modalEditCargoProps> = ({ cargo }) => {
                 <Grid item xs={2}>
                   <Item elevation={0}>
                     <TextField
+                      required
                       name="nameCargo"
                       label="Наименование груза"
                       type="search"
@@ -91,6 +92,8 @@ export const ModalEditCargo:FC<modalEditCargoProps> = ({ cargo }) => {
                           Объём груза
                         </FormHelperText>
                         <Input
+                          required
+                          type="number"
                           name="volume"
                           endAdornment={
                             <InputAdornment position="end">м³</InputAdornment>
@@ -109,6 +112,8 @@ export const ModalEditCargo:FC<modalEditCargoProps> = ({ cargo }) => {
                           Вес груза
                         </FormHelperText>
                         <Input
+                          required
+                          type="number"
                           name="weight"
                           endAdornment={
                             <InputAdornment position="end">кг</InputAdornment>
@@ -126,6 +131,7 @@ export const ModalEditCargo:FC<modalEditCargoProps> = ({ cargo }) => {
                 <Grid item xs={4}>
                   <Item elevation={0}>
                     <TextField
+                      required
                       name="product"
                       label="Характер груза(товары)"
                       placeholder="Введите товары через запятую"
@@ -147,6 +153,7 @@ export const ModalEditCargo:FC<modalEditCargoProps> = ({ cargo }) => {
                 <Grid item xs={2}>
                   <Item elevation={0}>
                     <TextField
+                      required
                       name="price"
                       label="Объявленная ценность"
                       type="number"
@@ -175,6 +182,7 @@ export const ModalEditCargo:FC<modalEditCargoProps> = ({ cargo }) => {
                 <Grid item xs={2}>
                   <Item elevation={0}>
                     <TextField
+                      required
                       name="departure"
                       label="Откуда"
                       type="search"
@@ -189,6 +197,7 @@ export const ModalEditCargo:FC<modalEditCargoProps> = ({ cargo }) => {
                 <Grid item xs={2}>
                   <Item elevation={0}>
                     <TextField
+                      required
                       name="arrival"
                       label="Куда"
                       type="search"
@@ -210,7 +219,7 @@ export const ModalEditCargo:FC<modalEditCargoProps> = ({ cargo }) => {
                     <SelectPriority />
                   </Item>
                 </Grid>
-                <ButtonLoading isEdit={isEdit} editValues={stateValues} />
+                <ButtonLoading isEdit={isEdit} Archive={false} />
               </Grid>
             </Typography>
           </TextColor>
@@ -218,4 +227,4 @@ export const ModalEditCargo:FC<modalEditCargoProps> = ({ cargo }) => {
       </Modal>
     </div>
   );
-}
+};

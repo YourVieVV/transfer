@@ -25,6 +25,7 @@ export default function SelectPriority() {
         Приоритет скорости доставки
       </InputLabel>
       <Select
+        required
         labelId="demo-simple-select-standard-label"
         name="priority"
         value={priority}

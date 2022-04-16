@@ -4,6 +4,7 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
+  Alert,
   Chip,
   Typography,
 } from '@mui/material';
@@ -18,8 +19,8 @@ import AirplanemodeActiveIcon from '@mui/icons-material/AirplanemodeActive';
 import DirectionsBusIcon from '@mui/icons-material/DirectionsBus';
 import DirectionsSubwayIcon from '@mui/icons-material/DirectionsSubway';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
-import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 import { formikTypes } from '../../../redux/Types';
+import { ModalInArchive } from '../../Modals/ModalInArchive';
 
 interface cargoListProps {
   cargo: formikTypes;
@@ -123,9 +124,23 @@ export const CargoList: FC<cargoListProps> = ({ cargo, state }) => {
           <Typography sx={{ flexGrow: 1, flexShrink: 1, flexBasis: 0 }}>
             Скорость доставки {item?.priority}
           </Typography>
+          {setState === 'archive' ? (
+            <>
+              <Typography sx={{ flexGrow: 1, flexShrink: 1, flexBasis: 0 }}>
+                рейтинг: {item?.rating}
+              </Typography>
+              <Typography sx={{ flexGrow: 1, flexShrink: 1, flexBasis: 0 }}>
+                {item?.isDone ? (
+                  <Alert severity="success">{item?.comment}</Alert>
+                ) : (
+                  <Alert severity="warning">{item?.comment}</Alert>
+                )}
+              </Typography>
+            </>
+          ) : null}
         </AccordionDetails>
       </Accordion>
-      {setState == 'create' ? (
+      {setState === 'create' ? (
         <>
           <ModalEditCargo cargo={item} />
           <LocalShippingIcon color="info" onClick={handleClickOnMyWay} />
@@ -134,9 +149,9 @@ export const CargoList: FC<cargoListProps> = ({ cargo, state }) => {
             onClick={handleClickOutFromStore}
           />
         </>
-      ) : (
-        <AssignmentTurnedInIcon color="info" />
-      )}
+      ) : setState === 'onMyWay' ? (
+        <ModalInArchive cargo={item} />
+      ) : null}
     </Item>
   );
 };

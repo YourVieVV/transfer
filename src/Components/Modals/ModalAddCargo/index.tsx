@@ -52,6 +52,7 @@ export default function ModalAddCargo() {
                 <Grid item xs={2}>
                   <Item elevation={0}>
                     <TextField
+                      required
                       name="nameCargo"
                       label="Наименование груза"
                       type="search"
@@ -71,6 +72,8 @@ export default function ModalAddCargo() {
                           Объём груза
                         </FormHelperText>
                         <Input
+                          required
+                          type="number"
                           name="volume"
                           endAdornment={
                             <InputAdornment position="end">м³</InputAdornment>
@@ -89,6 +92,8 @@ export default function ModalAddCargo() {
                           Вес груза
                         </FormHelperText>
                         <Input
+                          required
+                          type="number"
                           name="weight"
                           endAdornment={
                             <InputAdornment position="end">кг</InputAdornment>
@@ -106,6 +111,7 @@ export default function ModalAddCargo() {
                 <Grid item xs={4}>
                   <Item elevation={0}>
                     <TextField
+                      required
                       name="product"
                       label="Характер груза(товары)"
                       placeholder="Введите товары через запятую"
@@ -127,6 +133,7 @@ export default function ModalAddCargo() {
                 <Grid item xs={2}>
                   <Item elevation={0}>
                     <TextField
+                      required
                       name="price"
                       label="Объявленная ценность"
                       type="number"
@@ -155,6 +162,7 @@ export default function ModalAddCargo() {
                 <Grid item xs={2}>
                   <Item elevation={0}>
                     <TextField
+                      required
                       name="departure"
                       label="Откуда"
                       type="search"
@@ -169,6 +177,7 @@ export default function ModalAddCargo() {
                 <Grid item xs={2}>
                   <Item elevation={0}>
                     <TextField
+                      required
                       name="arrival"
                       label="Куда"
                       type="search"
@@ -190,7 +199,7 @@ export default function ModalAddCargo() {
                     <SelectPriority />
                   </Item>
                 </Grid>
-                <ButtonLoading isEdit={isEdit} />
+                <ButtonLoading isEdit={isEdit} Archive={false} />
               </Grid>
             </Typography>
           </TextColor>

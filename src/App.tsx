@@ -7,17 +7,17 @@ import Header from './Components/HeaderComponent';
 import { Box, Container, CssBaseline } from '@mui/material';
 import { initialValueFormik } from './redux/Types';
 import { Formik } from 'formik';
+import { Archive } from './Components/Archive';
+import { MainSchema } from './Components/ValidationShema';
 
 function App() {
   return (
     <Formik
       initialValues={initialValueFormik}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 400);
+      onSubmit={(values) => {
+        console.log(values);
       }}
+      validationSchema={MainSchema}
     >
       {() => (
         <div className="App">
@@ -29,6 +29,7 @@ function App() {
                 <Routes>
                   <Route path="/" element={<CargoDirection />} />
                   <Route path="/transfer" element={<TransferCargo />} />
+                  <Route path="/archive" element={<Archive />} />
                 </Routes>
               </div>
             </Box>
