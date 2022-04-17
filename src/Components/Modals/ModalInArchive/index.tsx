@@ -31,8 +31,7 @@ export const ModalInArchive: FC<modalEditCargoProps> = ({ cargo }) => {
   const isEdit = true;
   const [ratingValue, setRatingValue] = useState<number | null>(0);
   const [commentValue, setCommentValue] = useState('');
-  const { setFieldValue } =
-    useFormikContext<formikTypes>();
+  const { setFieldValue } = useFormikContext<formikTypes>();
   const stateValues = cargo;
   const redux = useSelector((state) => state.reducer);
 
@@ -84,12 +83,12 @@ export const ModalInArchive: FC<modalEditCargoProps> = ({ cargo }) => {
                       Груз прибыл полноценным?
                     </FormLabel>
                     <RadioGroup
-                      required
                       row
                       aria-labelledby="demo-row-radio-buttons-group-label"
                       name="isDone"
                       sx={{ justifyContent: 'center' }}
                       onChange={handleChangeRadio}
+                      defaultValue="true"
                     >
                       <FormControlLabel
                         value="true"
@@ -107,7 +106,6 @@ export const ModalInArchive: FC<modalEditCargoProps> = ({ cargo }) => {
                 <Grid item xs={4}>
                   <Item elevation={0}>
                     <TextField
-                      required
                       name="comment"
                       label="Коментарий к доставке"
                       multiline
@@ -125,7 +123,6 @@ export const ModalInArchive: FC<modalEditCargoProps> = ({ cargo }) => {
                       Оцените качество доставки
                     </Typography>
                     <Rating
-                      required
                       name="rating"
                       value={ratingValue}
                       onChange={handleChangeRating}

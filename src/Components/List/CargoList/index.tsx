@@ -66,6 +66,7 @@ export const CargoList: FC<cargoListProps> = ({ cargo, state }) => {
         alignItems: 'center',
         justifyContent: 'space-around',
       }}
+      elevation={0}
     >
       <Accordion
         expanded={expanded === 'panel1'}
@@ -86,7 +87,7 @@ export const CargoList: FC<cargoListProps> = ({ cargo, state }) => {
           <Typography sx={{ flexGrow: 1, flexShrink: 1, flexBasis: 0 }}>
             {item?.weight}кг
           </Typography>
-          <Typography sx={{ flexGrow: 3, flexShrink: 1, flexBasis: 0 }}>
+          <Typography sx={{ flexGrow: 2, flexShrink: 1, flexBasis: 0 }}>
             {item?.departure} - {item?.arrival}
           </Typography>
           <Typography sx={{ flexGrow: 1, flexShrink: 1, flexBasis: 0 }}>
@@ -124,6 +125,8 @@ export const CargoList: FC<cargoListProps> = ({ cargo, state }) => {
           <Typography sx={{ flexGrow: 1, flexShrink: 1, flexBasis: 0 }}>
             Скорость доставки {item?.priority}
           </Typography>
+        </AccordionDetails>
+        <div>
           {setState === 'archive' ? (
             <>
               <Typography sx={{ flexGrow: 1, flexShrink: 1, flexBasis: 0 }}>
@@ -138,7 +141,7 @@ export const CargoList: FC<cargoListProps> = ({ cargo, state }) => {
               </Typography>
             </>
           ) : null}
-        </AccordionDetails>
+        </div>
       </Accordion>
       {setState === 'create' ? (
         <>

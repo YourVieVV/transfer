@@ -1,17 +1,13 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import LoadingButton from '@mui/lab/LoadingButton';
 import { Alert, Backdrop, Box, CircularProgress, Grid } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { Item } from '../Grid/Item';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  addInStore,
-  editInStore,
-  inArchive,
-} from '../../redux/Action';
+import { addInStore, editInStore, inArchive } from '../../redux/Action';
 import { useFormikContext } from 'formik';
 import { v4 as uuidv4 } from 'uuid';
-import { formikTypes } from '../../redux/Types';
+import { formikTypes, initialValueFormik } from '../../redux/Types';
 import { loadStyle } from '../../StylesComponents/Modals';
 
 interface buttonLoadingProps {
@@ -27,8 +23,18 @@ export const ButtonLoading: FC<buttonLoadingProps> = ({
 }) => {
   const [loading, setLoading] = useState(false);
   const [isload, setIsLoad] = useState(false);
+  const [isGo, setIsGo] = useState(true);
   const cargoValues = { ...cargo };
-  const { values, setFieldValue } = useFormikContext<formikTypes>();
+  const { values, errors } =
+    useFormikContext<formikTypes>();
+
+  useEffect(() => {
+    if (Object.keys(errors).length == 0) {
+      setIsGo(false);
+    } else {
+      setIsGo(true);
+    }
+  }, [cargoValues]);
 
   const UniqueId = uuidv4();
   const dispatch = useDispatch();
@@ -37,7 +43,7 @@ export const ButtonLoading: FC<buttonLoadingProps> = ({
   const reduxValue = [...redux];
   const item = { ...values };
 
-  function handleClick() {
+  const handleClick = () => {
     setLoading(true);
 
     const timer = setTimeout(() => {
@@ -75,7 +81,7 @@ export const ButtonLoading: FC<buttonLoadingProps> = ({
       setIsLoad(true);
     }, 2000);
     return () => clearTimeout(timer);
-  }
+  };
 
   return (
     <>
@@ -86,6 +92,7 @@ export const ButtonLoading: FC<buttonLoadingProps> = ({
         <Item elevation={0}>
           <Box sx={{ '& > button': { m: 1 }, pl: 1, pt: 1 }}>
             <LoadingButton
+              disabled={isGo}
               type="submit"
               onClick={handleClick}
               endIcon={<SendIcon />}

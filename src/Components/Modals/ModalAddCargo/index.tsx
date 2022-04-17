@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Grid,
   TextField,
@@ -24,11 +24,16 @@ import { modalStyle } from '../../../StylesComponents/Modals';
 
 export default function ModalAddCargo() {
   const [open, setOpen] = useState(false);
-  const { values, handleChange, handleBlur } = useFormikContext<formikTypes>();
+  const { values, handleChange, handleBlur, touched, errors, resetForm } =
+    useFormikContext<formikTypes>();
   const isEdit = false;
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  useEffect(() => {
+    resetForm();
+  }, [open]);
 
   return (
     <div>
@@ -62,6 +67,16 @@ export default function ModalAddCargo() {
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
+                    {touched.nameCargo && errors.nameCargo && (
+                      <Typography
+                        sx={{ color: 'red' }}
+                        variant="caption"
+                        display="block"
+                        gutterBottom
+                      >
+                        {errors.nameCargo}
+                      </Typography>
+                    )}
                   </Item>
                 </Grid>
                 <Grid item xs={2}>
@@ -84,6 +99,16 @@ export default function ModalAddCargo() {
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
+                        {touched.volume && errors.volume && (
+                          <Typography
+                            sx={{ color: 'red' }}
+                            variant="caption"
+                            display="block"
+                            gutterBottom
+                          >
+                            {errors.volume}
+                          </Typography>
+                        )}
                       </FormControl>
                     </Item>
                     <Item elevation={0} sx={{ width: '50%', p: 0, mr: '25px' }}>
@@ -104,6 +129,16 @@ export default function ModalAddCargo() {
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
+                        {touched.weight && errors.weight && (
+                          <Typography
+                            sx={{ color: 'red' }}
+                            variant="caption"
+                            display="block"
+                            gutterBottom
+                          >
+                            {errors.weight}
+                          </Typography>
+                        )}
                       </FormControl>
                     </Item>
                   </Item>
@@ -123,6 +158,16 @@ export default function ModalAddCargo() {
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
+                    {touched.product && errors.product && (
+                      <Typography
+                        sx={{ color: 'red' }}
+                        variant="caption"
+                        display="block"
+                        gutterBottom
+                      >
+                        {errors.product}
+                      </Typography>
+                    )}
                   </Item>
                 </Grid>
                 <Grid item xs={2}>
@@ -145,6 +190,16 @@ export default function ModalAddCargo() {
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
+                    {touched.price && errors.price && (
+                      <Typography
+                        sx={{ color: 'red' }}
+                        variant="caption"
+                        display="block"
+                        gutterBottom
+                      >
+                        {errors.price}
+                      </Typography>
+                    )}
                   </Item>
                 </Grid>
               </Grid>
@@ -172,6 +227,16 @@ export default function ModalAddCargo() {
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
+                    {touched.departure && errors.departure && (
+                      <Typography
+                        sx={{ color: 'red' }}
+                        variant="caption"
+                        display="block"
+                        gutterBottom
+                      >
+                        {errors.departure}
+                      </Typography>
+                    )}
                   </Item>
                 </Grid>
                 <Grid item xs={2}>
@@ -187,6 +252,16 @@ export default function ModalAddCargo() {
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
+                    {touched.arrival && errors.arrival && (
+                      <Typography
+                        sx={{ color: 'red' }}
+                        variant="caption"
+                        display="block"
+                        gutterBottom
+                      >
+                        {errors.arrival}
+                      </Typography>
+                    )}
                   </Item>
                 </Grid>
                 <Grid item xs={2}>

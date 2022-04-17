@@ -7,22 +7,21 @@ export const IN_ARCHIVE = 'IN_ARCHIVE';
 export const initialValueFormik = {
   id: '',
   nameCargo: '',
-  volume: 0,
-  weight: 0,
+  volume: '',
+  weight: '',
   product: '',
   luxury: false,
   additionalDocuments: false,
-  price: 0,
+  price: '',
   departure: '',
   arrival: '',
   typeTransportation: '',
   priority: '',
   transportation: false,
   isEdit: false,
-  isNowCreate: true,
   onMyWay: false,
   isArchive: false,
-  isDone: false,
+  isDone: true,
   comment: '',
   rating: 0,
 };
@@ -42,7 +41,6 @@ export type formikTypes = {
   priority: string;
   transportation: boolean;
   isEdit: boolean;
-  isNowCreate: boolean;
   onMyWay: boolean;
   isArchive: boolean;
   isDone: boolean;

@@ -15,7 +15,7 @@ export const MainSchema = Yup.object().shape({
     .required('Обязательно'),
   product: Yup.string()
     .min(1, 'Коротко!')
-    .max(50, 'Длинно!')
+    .max(255, 'Длинно!')
     .required('Обязательно'),
   luxury: Yup.string().required('Обязательно'),
   price: Yup.string()
@@ -32,9 +32,4 @@ export const MainSchema = Yup.object().shape({
     .required('Обязательно'),
   typeTransportation: Yup.string().required('Обязательно'),
   priority: Yup.string().required('Обязательно'),
-  comment: Yup.string()
-    .min(1, 'Коротко!')
-    .max(50, 'Длинно!')
-    .required('Обязательно'),
-  rating: Yup.string().required('Обязательно'),
 });
