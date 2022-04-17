@@ -3,12 +3,12 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import { Alert, Backdrop, Box, CircularProgress, Grid } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { Item } from '../Grid/Item';
-import { useDispatch, useSelector } from 'react-redux';
 import { addInStore, editInStore, inArchive } from '../../redux/Action';
 import { useFormikContext } from 'formik';
 import { v4 as uuidv4 } from 'uuid';
-import { formikTypes, initialValueFormik } from '../../redux/Types';
+import { formikTypes, data } from '../../redux/Types';
 import { loadStyle } from '../../StylesComponents/Modals';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 
 interface buttonLoadingProps {
   isEdit: boolean;
@@ -25,8 +25,7 @@ export const ButtonLoading: FC<buttonLoadingProps> = ({
   const [isload, setIsLoad] = useState(false);
   const [isGo, setIsGo] = useState(true);
   const cargoValues = { ...cargo };
-  const { values, errors } =
-    useFormikContext<formikTypes>();
+  const { values, errors } = useFormikContext<formikTypes>();
 
   useEffect(() => {
     if (Object.keys(errors).length == 0) {
@@ -37,9 +36,9 @@ export const ButtonLoading: FC<buttonLoadingProps> = ({
   }, [cargoValues]);
 
   const UniqueId = uuidv4();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  const redux = useSelector((state) => state.reducer);
+  const redux = useAppSelector((state) => state.reducer);
   const reduxValue = [...redux];
   const item = { ...values };
 
@@ -58,7 +57,7 @@ export const ButtonLoading: FC<buttonLoadingProps> = ({
         if (Archive === true) {
           cargoValues.isArchive = true;
           cargoValues.onMyWay = false;
-          const data = reduxValue.map((el) => {
+          const data: data = reduxValue.map((el) => {
             if (el.id === cargoValues.id) {
               return cargoValues;
             } else {
@@ -67,7 +66,7 @@ export const ButtonLoading: FC<buttonLoadingProps> = ({
           });
           dispatch(inArchive(data));
         } else {
-          const data = reduxValue.map((el) => {
+          const data: data = reduxValue.map((el) => {
             if (el.id === item.id) {
               return item;
             } else {

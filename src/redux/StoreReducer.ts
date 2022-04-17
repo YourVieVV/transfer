@@ -4,11 +4,16 @@ import {
   EDIT_IN_STORE,
   ON_MY_WAY,
   IN_ARCHIVE,
+  formikTypes,
 } from './Types';
+import { PayloadAction } from '@reduxjs/toolkit';
 
 const defaultState: any = [];
 
-export const storeReduser = (state = defaultState, action) => {
+export const storeReduser = (
+  state = defaultState,
+  action: PayloadAction<formikTypes>
+) => {
   switch (action.type) {
     case ADD_IN_STORE:
       return [...state, action.payload];

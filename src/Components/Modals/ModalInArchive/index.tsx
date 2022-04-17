@@ -1,4 +1,4 @@
-import React, { useEffect, useState, FC } from 'react';
+import React, { useState, FC, SyntheticEvent } from 'react';
 import {
   Grid,
   TextField,
@@ -16,9 +16,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import { Item } from '../../Grid/Item';
 import { ButtonLoading } from '../../Buttons/ButtonLoading';
 import { useFormikContext } from 'formik';
-import { formikTypes } from '../../../redux/Types';
+import { data, formikTypes } from '../../../redux/Types';
 import { modalStyle } from '../../../StylesComponents/Modals';
-import { useSelector } from 'react-redux';
 import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 import { TransferList } from '../../TransferList';
 
@@ -33,7 +32,6 @@ export const ModalInArchive: FC<modalEditCargoProps> = ({ cargo }) => {
   const [commentValue, setCommentValue] = useState('');
   const { setFieldValue } = useFormikContext<formikTypes>();
   const stateValues = cargo;
-  const redux = useSelector((state) => state.reducer);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -41,19 +39,22 @@ export const ModalInArchive: FC<modalEditCargoProps> = ({ cargo }) => {
     setCommentValue(event.target.value);
     stateValues.comment = event.target.value;
   };
-  const handleChangeRadio = (event) => {
+  const handleChangeRadio = (event: data) => {
     if (event.target.value === 'true') {
       setFieldValue('isDone', true);
     } else {
       setFieldValue('isDone', false);
     }
   };
-  const handleChangeRating = (event, newValue) => {
+  const handleChangeRating = (
+    event: SyntheticEvent<Element, Event>,
+    newValue: number | null
+  ) => {
     setRatingValue(newValue);
-    stateValues.rating = newValue;
+    if (newValue != null) {
+      stateValues.rating = newValue;
+    }
   };
-
-  useEffect(() => {}, [open]);
 
   return (
     <div>
@@ -119,7 +120,7 @@ export const ModalInArchive: FC<modalEditCargoProps> = ({ cargo }) => {
                 </Grid>
                 <Grid item xs={4}>
                   <Item elevation={0}>
-                    <Typography sx={{ mt: 1 }} component="legend">
+                    <Typography sx={{ mt: 1 }} component="span">
                       Оцените качество доставки
                     </Typography>
                     <Rating

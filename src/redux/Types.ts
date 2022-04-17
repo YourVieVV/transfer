@@ -44,5 +44,8 @@ export type formikTypes = {
   onMyWay: boolean;
   isArchive: boolean;
   isDone: boolean;
+  comment: string;
   rating: number;
 };
+
+export type data = any;

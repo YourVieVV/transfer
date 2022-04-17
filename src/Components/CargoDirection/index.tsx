@@ -4,10 +4,10 @@ import { UpWrapper, Wrapper } from '../../StylesComponents/Wrapper';
 import { TextColor } from '../../StylesComponents/TextColor';
 import { Item } from '../Grid/Item';
 import { CargoList } from '../List/CargoList';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../../hooks';
 
 export default function CargoDirection() {
-  const redux = useSelector((state) => state);
+  const redux = useAppSelector((state) => state);
   const reduxValue = redux.reducer;
 
   return (

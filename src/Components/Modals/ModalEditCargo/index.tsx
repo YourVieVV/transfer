@@ -21,7 +21,7 @@ import { useFormikContext } from 'formik';
 import { formikTypes } from '../../../redux/Types';
 import { modalStyle } from '../../../StylesComponents/Modals';
 import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../../../hooks';
 
 interface modalEditCargoProps {
   cargo: formikTypes;
@@ -33,9 +33,11 @@ export const ModalEditCargo: FC<modalEditCargoProps> = ({ cargo }) => {
   const { values, setFieldValue, handleChange, handleBlur } =
     useFormikContext<formikTypes>();
   const stateValues = cargo;
-  const redux = useSelector((state) => state.reducer);
+  const redux = useAppSelector((state) => state.reducer);
 
-  const returnValues = redux.find((item) => item.id === stateValues.id);
+  const returnValues = redux.find(
+    (item: formikTypes) => item.id === stateValues.id
+  );
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);

@@ -11,7 +11,6 @@ import {
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import RestoreFromTrashOutlinedIcon from '@mui/icons-material/RestoreFromTrashOutlined';
-import { useDispatch, useSelector } from 'react-redux';
 import { onMyWay, outFromStore } from '../../../redux/Action';
 import { ModalEditCargo } from '../../Modals/ModalEditCargo';
 import DirectionsBoatFilledIcon from '@mui/icons-material/DirectionsBoatFilled';
@@ -19,8 +18,9 @@ import AirplanemodeActiveIcon from '@mui/icons-material/AirplanemodeActive';
 import DirectionsBusIcon from '@mui/icons-material/DirectionsBus';
 import DirectionsSubwayIcon from '@mui/icons-material/DirectionsSubway';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
-import { formikTypes } from '../../../redux/Types';
+import { formikTypes, data } from '../../../redux/Types';
 import { ModalInArchive } from '../../Modals/ModalInArchive';
+import { useAppSelector, useAppDispatch } from '../../../hooks';
 
 interface cargoListProps {
   cargo: formikTypes;
@@ -29,9 +29,9 @@ interface cargoListProps {
 
 export const CargoList: FC<cargoListProps> = ({ cargo, state }) => {
   const [expanded, setExpanded] = useState<string | false>(false);
-  const redux = useSelector((state) => state.reducer);
+  const redux = useAppSelector((state) => state.reducer);
   const reduxValue = [...redux];
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const arrayProduct = cargo?.product.split(',');
   const setState = state;
@@ -44,7 +44,7 @@ export const CargoList: FC<cargoListProps> = ({ cargo, state }) => {
 
   const handleClickOnMyWay = () => {
     item.onMyWay = true;
-    const data = reduxValue.map((el) => {
+    const data: data = reduxValue.map((el) => {
       if (el.id === item.id) {
         return item;
       } else {
@@ -55,7 +55,7 @@ export const CargoList: FC<cargoListProps> = ({ cargo, state }) => {
   };
 
   const handleClickOutFromStore = () => {
-    const data = reduxValue.filter((i) => i.id !== item.id);
+    const data: data = reduxValue.filter((i) => i.id !== item.id);
     dispatch(outFromStore(data));
   };
 
@@ -105,10 +105,18 @@ export const CargoList: FC<cargoListProps> = ({ cargo, state }) => {
         <AccordionDetails
           sx={{ display: 'flex', flexWrap: 'wrap', pr: '40px' }}
         >
-          <Typography sx={{ flexGrow: 2, flexShrink: 1, flexBasis: 0 }}>
-            {arrayProduct.map((product) => {
+          <Typography
+            sx={{ flexGrow: 2, flexShrink: 1, flexBasis: 0 }}
+            component="span"
+          >
+            {arrayProduct.map((product, index) => {
               return (
-                <Chip sx={{ m: '1px' }} label={product} variant="outlined" />
+                <Chip
+                  key={index.toString()}
+                  sx={{ m: '1px' }}
+                  label={product}
+                  variant="outlined"
+                />
               );
             })}
           </Typography>

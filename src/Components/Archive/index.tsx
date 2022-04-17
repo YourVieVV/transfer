@@ -4,10 +4,10 @@ import { Box, Grid, Typography } from '@mui/material';
 import { Item } from '../Grid/Item';
 import { TextColor } from '../../StylesComponents/TextColor';
 import { CargoList } from '../List/CargoList';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../../hooks';
 
 export const Archive = () => {
-  const redux = useSelector((state) => state);
+  const redux = useAppSelector((state) => state);
 
   const reduxValue = redux.reducer;
   return (
