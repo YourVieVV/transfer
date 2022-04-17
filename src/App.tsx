@@ -1,25 +1,42 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import { TransferCargo } from './Components/TransferCargo';
+import { CargoDirection } from './Components/CargoDirection';
+import { Header } from './Components/HeaderComponent';
+import { Box, Container, CssBaseline } from '@mui/material';
+import { initialValueFormik } from './redux/Types';
+import { Formik } from 'formik';
+import { Archive } from './Components/Archive';
+import { MainSchema } from './Components/ValidationShema';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Formik
+      initialValues={initialValueFormik}
+      onSubmit={(values) => {
+        console.log(values);
+      }}
+      validationSchema={MainSchema}
+    >
+      {() => (
+        <div className="App">
+          <CssBaseline />
+          <Container fixed>
+            <Box sx={{ height: '100vh' }}>
+              <div>
+                <Header />
+                <Routes>
+                  <Route path="/" element={<CargoDirection />} />
+                  <Route path="/transfer" element={<TransferCargo />} />
+                  <Route path="/archive" element={<Archive />} />
+                </Routes>
+              </div>
+            </Box>
+          </Container>
+        </div>
+      )}
+    </Formik>
   );
 }
 
