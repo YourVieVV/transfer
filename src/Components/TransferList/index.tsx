@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { useState, FC } from 'react';
 import Grid from '@mui/material/Grid';
 import List from '@mui/material/List';
 import Card from '@mui/material/Card';
@@ -29,9 +29,9 @@ function union(a: readonly string[], b: readonly string[]) {
 
 export const TransferList: FC<TransferListProps> = ({ cargo }) => {
   const listValue = cargo.product.split(',');
-  const [checked, setChecked] = React.useState<readonly string[]>([]);
-  const [left, setLeft] = React.useState<readonly string[]>(listValue);
-  const [right, setRight] = React.useState<readonly string[]>([]);
+  const [checked, setChecked] = useState<readonly string[]>([]);
+  const [left, setLeft] = useState<readonly string[]>(listValue);
+  const [right, setRight] = useState<readonly string[]>([]);
 
   const leftChecked = intersection(checked, left);
   const rightChecked = intersection(checked, right);

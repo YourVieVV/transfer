@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, FC } from 'react';
 import {
   InputLabel,
   FormControl,
@@ -10,10 +10,10 @@ import {
 } from '@mui/material';
 import { useFormikContext } from 'formik';
 
-export default function SelectLuxury() {
-  const [luxury, setLuxury] = useState('');
-  const [isLuxury, setIsLuxury] = useState(false);
-  const [checked, setChecked] = useState(true);
+export const SelectLuxury: FC = () => {
+  const [luxury, setLuxury] = useState<string>('');
+  const [isLuxury, setIsLuxury] = useState<boolean>(false);
+  const [checked, setChecked] = useState<boolean>(true);
 
   const { setFieldValue } = useFormikContext();
 
@@ -69,4 +69,4 @@ export default function SelectLuxury() {
       )}
     </FormControl>
   );
-}
+};

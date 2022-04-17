@@ -28,11 +28,12 @@ interface cargoListProps {
 }
 
 export const CargoList: FC<cargoListProps> = ({ cargo, state }) => {
-  const [expanded, setExpanded] = useState<string | false>(false);
   const redux = useAppSelector((state) => state.reducer);
-  const reduxValue = [...redux];
   const dispatch = useAppDispatch();
 
+  const [expanded, setExpanded] = useState<string | false>(false);
+
+  const reduxValue = [...redux];
   const arrayProduct = cargo?.product.split(',');
   const setState = state;
   const item = { ...cargo };
@@ -137,10 +138,16 @@ export const CargoList: FC<cargoListProps> = ({ cargo, state }) => {
         <div>
           {setState === 'archive' ? (
             <>
-              <Typography sx={{ flexGrow: 1, flexShrink: 1, flexBasis: 0 }}>
+              <Typography
+                component="span"
+                sx={{ flexGrow: 1, flexShrink: 1, flexBasis: 0 }}
+              >
                 рейтинг: {item?.rating}
               </Typography>
-              <Typography sx={{ flexGrow: 1, flexShrink: 1, flexBasis: 0 }}>
+              <Typography
+                component="span"
+                sx={{ flexGrow: 1, flexShrink: 1, flexBasis: 0 }}
+              >
                 {item?.isDone ? (
                   <Alert severity="success">{item?.comment}</Alert>
                 ) : (

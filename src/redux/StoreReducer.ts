@@ -5,10 +5,11 @@ import {
   ON_MY_WAY,
   IN_ARCHIVE,
   formikTypes,
+  data,
 } from './Types';
 import { PayloadAction } from '@reduxjs/toolkit';
 
-const defaultState: any = [];
+const defaultState: data = [];
 
 export const storeReduser = (
   state = defaultState,

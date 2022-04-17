@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, FC } from 'react';
 import {
   InputLabel,
   FormControl,
@@ -9,8 +9,8 @@ import {
 import { useFormikContext } from 'formik';
 import { formikTypes } from '../../redux/Types';
 
-export default function SelectPriority() {
-  const [priority, setPriority] = useState('');
+export const SelectPriority: FC = () => {
+  const [priority, setPriority] = useState<string>('');
 
   const { setFieldValue } = useFormikContext<formikTypes>();
 
@@ -38,4 +38,4 @@ export default function SelectPriority() {
       </Select>
     </FormControl>
   );
-}
+};

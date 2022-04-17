@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, FC } from 'react';
 import {
   Box,
   MenuItem,
@@ -12,11 +12,12 @@ import AirplanemodeActiveIcon from '@mui/icons-material/AirplanemodeActive';
 import DirectionsBusIcon from '@mui/icons-material/DirectionsBus';
 import DirectionsSubwayIcon from '@mui/icons-material/DirectionsSubway';
 import { useFormikContext } from 'formik';
+import { formikTypes } from '../../redux/Types';
 
-export default function SelectTransportFields() {
-  const [currency, setCurrency] = React.useState('');
+export const SelectTransportFields: FC = () => {
+  const [currency, setCurrency] = useState<string>('');
 
-  const { setFieldValue } = useFormikContext();
+  const { setFieldValue } = useFormikContext<formikTypes>();
 
   const handleChange = (event: SelectChangeEvent) => {
     setFieldValue('typeTransportation', event.target.value);
@@ -64,4 +65,4 @@ export default function SelectTransportFields() {
       </div>
     </Box>
   );
-}
+};

@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useState, FC } from 'react';
 import { Box, Tab } from '@mui/material';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import { useNavigate } from 'react-router-dom';
 import { Wrapper } from '../../StylesComponents/Wrapper';
 
-export default function Header() {
-  const [value, setValue] = React.useState('1');
+export const Header: FC = () => {
+  const navigate = useNavigate();
+
+  const [value, setValue] = useState<string>('1');
+
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
-  const navigate = useNavigate();
+
   return (
     <Wrapper>
       <Box sx={{ width: '100%', typography: 'h4' }}>
@@ -38,4 +41,4 @@ export default function Header() {
       </Box>
     </Wrapper>
   );
-}
+};

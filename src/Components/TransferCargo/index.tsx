@@ -1,17 +1,17 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { UpWrapper, Wrapper } from '../../StylesComponents/Wrapper';
 import { Box, Grid, Typography } from '@mui/material';
 import { Item } from '../Grid/Item';
 import { TextColor } from '../../StylesComponents/TextColor';
-import ModalAddCargo from '../Modals/ModalAddCargo';
+import { ModalAddCargo } from '../Modals/ModalAddCargo';
 import { CargoList } from '../List/CargoList';
 import { useAppSelector } from '../../hooks';
 import { formikTypes } from '../../redux/Types';
 
-export default function TransferCargo() {
+export const TransferCargo: FC = () => {
   const redux = useAppSelector((state) => state);
-
   const reduxValue = redux.reducer;
+
   return (
     <Wrapper>
       <UpWrapper>
@@ -49,4 +49,4 @@ export default function TransferCargo() {
       </UpWrapper>
     </Wrapper>
   );
-}
+};

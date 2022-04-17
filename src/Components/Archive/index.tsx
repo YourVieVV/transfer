@@ -5,11 +5,12 @@ import { Item } from '../Grid/Item';
 import { TextColor } from '../../StylesComponents/TextColor';
 import { CargoList } from '../List/CargoList';
 import { useAppSelector } from '../../hooks';
+import { formikTypes } from '../../redux/Types';
 
 export const Archive = () => {
   const redux = useAppSelector((state) => state);
-
   const reduxValue = redux.reducer;
+
   return (
     <Wrapper>
       <UpWrapper>
@@ -23,7 +24,7 @@ export const Archive = () => {
               </Item>
             </Grid>
             <Grid item xs={10}>
-              {reduxValue.map((cargo: any, index: number) => {
+              {reduxValue.map((cargo: formikTypes, index: number) => {
                 if (!cargo.onMyWay && cargo.isArchive && cargo.isDone) {
                   return (
                     <CargoList
@@ -50,7 +51,7 @@ export const Archive = () => {
             </Item>
           </Grid>
           <Grid item xs={10}>
-            {reduxValue.map((cargo: any, index: number) => {
+            {reduxValue.map((cargo: formikTypes, index: number) => {
               if (!cargo.onMyWay && cargo.isArchive && !cargo.isDone) {
                 return (
                   <CargoList

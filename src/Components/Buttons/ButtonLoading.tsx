@@ -21,26 +21,31 @@ export const ButtonLoading: FC<buttonLoadingProps> = ({
   Archive,
   cargo,
 }) => {
-  const [loading, setLoading] = useState(false);
-  const [isload, setIsLoad] = useState(false);
-  const [isGo, setIsGo] = useState(true);
-  const cargoValues = { ...cargo };
-  const { values, errors } = useFormikContext<formikTypes>();
-
-  useEffect(() => {
-    if (Object.keys(errors).length == 0) {
-      setIsGo(false);
-    } else {
-      setIsGo(true);
-    }
-  }, [cargoValues]);
-
   const UniqueId = uuidv4();
   const dispatch = useAppDispatch();
-
   const redux = useAppSelector((state) => state.reducer);
+
+  const [loading, setLoading] = useState<boolean>(false);
+  const [isload, setIsLoad] = useState<boolean>(false);
+  const [isGo, setIsGo] = useState<boolean>(true);
+
+  const { values, errors } = useFormikContext<formikTypes>();
+
   const reduxValue = [...redux];
   const item = { ...values };
+  const cargoValues = { ...cargo };
+
+  useEffect(() => {
+    if (!Archive) {
+      if (Object.keys(errors).length === 0) {
+        setIsGo(false);
+      } else {
+        setIsGo(true);
+      }
+    } else {
+      setIsGo(false);
+    }
+  }, [cargoValues]);
 
   const handleClick = () => {
     setLoading(true);
@@ -54,9 +59,10 @@ export const ButtonLoading: FC<buttonLoadingProps> = ({
           })
         );
       } else {
-        if (Archive === true) {
+        if (Archive) {
           cargoValues.isArchive = true;
           cargoValues.onMyWay = false;
+          cargoValues.isDone = item.isDone;
           const data: data = reduxValue.map((el) => {
             if (el.id === cargoValues.id) {
               return cargoValues;
