@@ -5,11 +5,10 @@ import { TextColor } from '../../StylesComponents/TextColor';
 import { Item } from '../Grid/Item';
 import { CargoList } from '../List/CargoList';
 import { useAppSelector } from '../../hooks';
-import { formikTypes } from '../../redux/Types';
+import { formikTypes, Routes } from '../../redux/Types';
 
 export const CargoDirection: FC = () => {
-  const redux = useAppSelector((state) => state);
-  const reduxValue = redux.reducer;
+  const reduxData = useAppSelector((state) => state.reducer);
 
   return (
     <Wrapper>
@@ -24,13 +23,13 @@ export const CargoDirection: FC = () => {
               </Item>
             </Grid>
             <Grid item xs={10}>
-              {reduxValue.map((cargo: formikTypes, index: number) => {
-                if (cargo.onMyWay && !cargo.isArchive) {
+              {reduxData.map((cargo: formikTypes, index: number) => {
+                if (cargo.route === Routes.onMyWay) {
                   return (
                     <CargoList
                       key={index.toString()}
                       cargo={cargo}
-                      state="onMyWay"
+                      setRoute={Routes.onMyWay}
                     />
                   );
                 } else {

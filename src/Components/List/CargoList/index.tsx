@@ -1,4 +1,4 @@
-import React, { useState, FC } from 'react';
+import React, { useState, FC, useMemo } from 'react';
 import { Item } from '../../Grid/Item';
 import {
   Accordion,
@@ -18,25 +18,25 @@ import AirplanemodeActiveIcon from '@mui/icons-material/AirplanemodeActive';
 import DirectionsBusIcon from '@mui/icons-material/DirectionsBus';
 import DirectionsSubwayIcon from '@mui/icons-material/DirectionsSubway';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
-import { formikTypes, data } from '../../../redux/Types';
+import { formikTypes, data, Routes } from '../../../redux/Types';
 import { ModalInArchive } from '../../Modals/ModalInArchive';
 import { useAppSelector, useAppDispatch } from '../../../hooks';
 
 interface cargoListProps {
   cargo: formikTypes;
-  state?: string;
+  setRoute?: string;
 }
 
-export const CargoList: FC<cargoListProps> = ({ cargo, state }) => {
+export const CargoList: FC<cargoListProps> = ({ cargo, setRoute }) => {
   const redux = useAppSelector((state) => state.reducer);
   const dispatch = useAppDispatch();
 
   const [expanded, setExpanded] = useState<string | false>(false);
 
-  const reduxValue = [...redux];
-  const arrayProduct = cargo?.product.split(',');
-  const setState = state;
-  const item = { ...cargo };
+  const reduxData = useMemo(() => [...redux], [redux]);
+  const arrayProduct = useMemo(() => cargo?.product.split(','), [cargo]);
+  const route = useMemo(() => setRoute, [setRoute]);
+  const item = useMemo(() => ({ ...cargo }), [cargo]);
 
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
@@ -44,19 +44,22 @@ export const CargoList: FC<cargoListProps> = ({ cargo, state }) => {
     };
 
   const handleClickOnMyWay = () => {
-    item.onMyWay = true;
-    const data: data = reduxValue.map((el) => {
+    // поиск элемента в массиве данных
+    // и замена его значений на актуальные
+    // переход из состояния создания в состояние отправленные
+    const dataCollection: data = reduxData.map((el) => {
       if (el.id === item.id) {
+        item.route = Routes.onMyWay;
         return item;
       } else {
         return el;
       }
     });
-    dispatch(onMyWay(data));
+    dispatch(onMyWay(dataCollection));
   };
 
   const handleClickOutFromStore = () => {
-    const data: data = reduxValue.filter((i) => i.id !== item.id);
+    const data: data = reduxData.filter((i) => i.id !== item.id);
     dispatch(outFromStore(data));
   };
 
@@ -92,13 +95,16 @@ export const CargoList: FC<cargoListProps> = ({ cargo, state }) => {
             {item?.departure} - {item?.arrival}
           </Typography>
           <Typography sx={{ flexGrow: 1, flexShrink: 1, flexBasis: 0 }}>
-            {item?.typeTransportation === 'sea' ? (
+            {item?.typeTransportation === 'sea' && (
               <DirectionsBoatFilledIcon color={'primary'} />
-            ) : item?.typeTransportation === 'air' ? (
+            )}
+            {item?.typeTransportation === 'air' && (
               <AirplanemodeActiveIcon color={'primary'} />
-            ) : item?.typeTransportation === 'bus' ? (
+            )}
+            {item?.typeTransportation === 'bus' && (
               <DirectionsBusIcon color={'primary'} />
-            ) : (
+            )}
+            {item?.typeTransportation === 'subway' && (
               <DirectionsSubwayIcon color={'primary'} />
             )}
           </Typography>
@@ -136,7 +142,7 @@ export const CargoList: FC<cargoListProps> = ({ cargo, state }) => {
           </Typography>
         </AccordionDetails>
         <div>
-          {setState === 'archive' ? (
+          {route === Routes.inArchive ? (
             <>
               <Typography
                 component="span"
@@ -158,7 +164,7 @@ export const CargoList: FC<cargoListProps> = ({ cargo, state }) => {
           ) : null}
         </div>
       </Accordion>
-      {setState === 'create' ? (
+      {route === Routes.createCargo ? (
         <>
           <ModalEditCargo cargo={item} />
           <LocalShippingIcon color="info" onClick={handleClickOnMyWay} />
@@ -167,7 +173,7 @@ export const CargoList: FC<cargoListProps> = ({ cargo, state }) => {
             onClick={handleClickOutFromStore}
           />
         </>
-      ) : setState === 'onMyWay' ? (
+      ) : route === Routes.onMyWay ? (
         <ModalInArchive cargo={item} />
       ) : null}
     </Item>

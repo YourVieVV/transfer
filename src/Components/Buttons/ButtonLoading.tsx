@@ -6,7 +6,7 @@ import { Item } from '../Grid/Item';
 import { addInStore, editInStore, inArchive } from '../../redux/Action';
 import { useFormikContext } from 'formik';
 import { v4 as uuidv4 } from 'uuid';
-import { formikTypes, data } from '../../redux/Types';
+import { formikTypes, data, Routes } from '../../redux/Types';
 import { loadStyle } from '../../StylesComponents/Modals';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 
@@ -60,8 +60,7 @@ export const ButtonLoading: FC<buttonLoadingProps> = ({
         );
       } else {
         if (Archive) {
-          cargoValues.isArchive = true;
-          cargoValues.onMyWay = false;
+          cargoValues.route = Routes.inArchive;
           cargoValues.isDone = item.isDone;
           const data: data = reduxValue.map((el) => {
             if (el.id === cargoValues.id) {

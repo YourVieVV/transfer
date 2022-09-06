@@ -4,6 +4,12 @@ export const EDIT_IN_STORE = 'EDIT_IN_STORE';
 export const ON_MY_WAY = 'ON_MY_WAY';
 export const IN_ARCHIVE = 'IN_ARCHIVE';
 
+export enum Routes {
+  createCargo = 'createCargo',
+  onMyWay = 'onMyWay',
+  inArchive = 'inArchive',
+}
+
 export const initialValueFormik = {
   id: '',
   nameCargo: '',
@@ -19,8 +25,7 @@ export const initialValueFormik = {
   priority: '',
   transportation: false,
   isEdit: false,
-  onMyWay: false,
-  isArchive: false,
+  route: Routes.createCargo,
   isDone: true,
   comment: '',
   rating: 0,
@@ -41,8 +46,7 @@ export type formikTypes = {
   priority: string;
   transportation: boolean;
   isEdit: boolean;
-  onMyWay: boolean;
-  isArchive: boolean;
+  route: string;
   isDone: boolean;
   comment: string;
   rating: number;

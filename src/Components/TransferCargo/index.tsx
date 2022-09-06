@@ -6,11 +6,10 @@ import { TextColor } from '../../StylesComponents/TextColor';
 import { ModalAddCargo } from '../Modals/ModalAddCargo';
 import { CargoList } from '../List/CargoList';
 import { useAppSelector } from '../../hooks';
-import { formikTypes } from '../../redux/Types';
+import { formikTypes, Routes } from '../../redux/Types';
 
 export const TransferCargo: FC = () => {
-  const redux = useAppSelector((state) => state);
-  const reduxValue = redux.reducer;
+  const reduxData = useAppSelector((state) => state.reducer);
 
   return (
     <Wrapper>
@@ -30,13 +29,13 @@ export const TransferCargo: FC = () => {
               </Item>
             </Grid>
             <Grid item xs={10}>
-              {reduxValue.map((cargo: formikTypes, index: number) => {
-                if (!cargo.onMyWay && !cargo.isArchive) {
+              {reduxData.map((cargo: formikTypes, index: number) => {
+                if (cargo.route === Routes.createCargo) {
                   return (
                     <CargoList
                       key={index.toString()}
                       cargo={cargo}
-                      state="create"
+                      setRoute={Routes.createCargo}
                     />
                   );
                 } else {
