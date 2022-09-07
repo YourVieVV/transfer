@@ -28,31 +28,24 @@ interface modalEditCargoProps {
 }
 
 export const ModalEditCargo: FC<modalEditCargoProps> = ({ cargo }) => {
-  const redux = useAppSelector((state) => state.reducer);
-
   const [open, setOpen] = useState<boolean>(false);
   const [isEdit, setIsEdit] = useState<boolean>(false);
 
   const { values, setFieldValue, handleChange, handleBlur } =
     useFormikContext<formikTypes>();
 
-  const stateValues = cargo;
-  const returnValues = redux.find(
-    (item: formikTypes) => item.id === stateValues.id
-  );
-
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   useEffect(() => {
-    setFieldValue('id', returnValues.id);
-    setFieldValue('nameCargo', returnValues.nameCargo);
-    setFieldValue('volume', returnValues.volume);
-    setFieldValue('weight', returnValues.weight);
-    setFieldValue('product', returnValues.product);
-    setFieldValue('price', returnValues.price);
-    setFieldValue('departure', returnValues.departure);
-    setFieldValue('arrival', returnValues.arrival);
+    setFieldValue('id', cargo.id);
+    setFieldValue('nameCargo', cargo.nameCargo);
+    setFieldValue('volume', cargo.volume);
+    setFieldValue('weight', cargo.weight);
+    setFieldValue('product', cargo.product);
+    setFieldValue('price', cargo.price);
+    setFieldValue('departure', cargo.departure);
+    setFieldValue('arrival', cargo.arrival);
     setIsEdit(true);
   }, [open]);
 

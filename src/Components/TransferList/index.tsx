@@ -1,4 +1,4 @@
-import React, { useState, FC } from 'react';
+import React, { useState, FC, useMemo } from 'react';
 import Grid from '@mui/material/Grid';
 import List from '@mui/material/List';
 import Card from '@mui/material/Card';
@@ -28,7 +28,7 @@ function union(a: readonly string[], b: readonly string[]) {
 }
 
 export const TransferList: FC<TransferListProps> = ({ cargo }) => {
-  const listValue = cargo.product.split(',');
+  const listValue = useMemo(() => cargo.product.split(','), [cargo]);
   const [checked, setChecked] = useState<readonly string[]>([]);
   const [left, setLeft] = useState<readonly string[]>(listValue);
   const [right, setRight] = useState<readonly string[]>([]);

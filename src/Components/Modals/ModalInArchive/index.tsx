@@ -1,4 +1,4 @@
-import React, { useState, FC, SyntheticEvent } from 'react';
+import React, { useState, FC, SyntheticEvent, useMemo } from 'react';
 import {
   Grid,
   TextField,
@@ -32,13 +32,13 @@ export const ModalInArchive: FC<modalEditCargoProps> = ({ cargo }) => {
 
   const { setFieldValue } = useFormikContext<formikTypes>();
 
-  const stateValues = cargo;
+  const cargoValues = useMemo(() => cargo, [cargo]);
   const isEdit = true;
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const handleChangeComment = (event: React.ChangeEvent<HTMLInputElement>) => {
-    stateValues.comment = event.target.value;
+    cargoValues.comment = event.target.value;
     setCommentValue(event.target.value);
   };
   const handleChangeRadio = (event: data) => {
@@ -54,7 +54,7 @@ export const ModalInArchive: FC<modalEditCargoProps> = ({ cargo }) => {
   ) => {
     setRatingValue(newValue);
     if (newValue != null) {
-      stateValues.rating = newValue;
+      cargoValues.rating = newValue;
     }
   };
 
@@ -76,7 +76,7 @@ export const ModalInArchive: FC<modalEditCargoProps> = ({ cargo }) => {
             <Grid container columns={4} justifyContent="center">
               <Grid item xs={4}>
                 <Item elevation={0}>
-                  <TransferList cargo={stateValues} />
+                  <TransferList cargo={cargoValues} />
                 </Item>
               </Grid>
               <Grid item xs={4}>
@@ -134,7 +134,7 @@ export const ModalInArchive: FC<modalEditCargoProps> = ({ cargo }) => {
               <ButtonLoading
                 isEdit={isEdit}
                 Archive={true}
-                cargo={stateValues}
+                cargo={cargoValues}
               />
             </Grid>
           </TextColor>
