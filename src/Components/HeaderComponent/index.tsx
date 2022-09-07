@@ -2,13 +2,14 @@ import React, { useState, FC } from 'react';
 import { Box, Tab } from '@mui/material';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Wrapper } from '../../StylesComponents/Wrapper';
 
 export const Header: FC = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const [value, setValue] = useState<string>('1');
+  const [value, setValue] = useState<string>(location.pathname);
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
@@ -22,18 +23,18 @@ export const Header: FC = () => {
             <TabList onChange={handleChange} aria-label="lab API tabs example">
               <Tab
                 label="Отправленные"
-                value="1"
+                value="/"
                 onClick={() => navigate('/')}
               />
               <Tab
                 label="Создание/Отправка"
-                value="2"
-                onClick={() => navigate('transfer')}
+                value="/transfer"
+                onClick={() => navigate('/transfer')}
               />
               <Tab
                 label="Архив"
-                value="3"
-                onClick={() => navigate('archive')}
+                value="/archive"
+                onClick={() => navigate('/archive')}
               />
             </TabList>
           </Box>
