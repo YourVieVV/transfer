@@ -1,14 +1,13 @@
 import React, { FC } from 'react';
-import { UpWrapper, Wrapper } from '../../StylesComponents/Wrapper';
 import { Box, Grid, Typography } from '@mui/material';
-import { Item } from '../Grid/Item';
+import { UpWrapper, Wrapper } from '../../StylesComponents/Wrapper';
 import { TextColor } from '../../StylesComponents/TextColor';
-import { ModalAddCargo } from '../Modals/ModalAddCargo';
+import { Item } from '../Grid/Item';
 import { CargoList } from '../List/CargoList';
 import { useAppSelector } from '../../hooks';
 import { formikTypes, Routes } from '../../redux/Types';
 
-export const TransferCargo: FC = () => {
+export const TransferDirection: FC = () => {
   const reduxData = useAppSelector((state) => state.reducer);
 
   return (
@@ -16,26 +15,21 @@ export const TransferCargo: FC = () => {
       <UpWrapper>
         <Box sx={{ flexGrow: 1 }}>
           <Grid container spacing={2} columns={10}>
-            <Grid item xs={8}>
+            <Grid item xs={10}>
               <Item elevation={0}>
                 <TextColor>
-                  <Typography variant="h4">Неотправленные грузы</Typography>
+                  <Typography variant="h4">Грузы в пути</Typography>
                 </TextColor>
-              </Item>
-            </Grid>
-            <Grid item xs={2}>
-              <Item elevation={0}>
-                <ModalAddCargo />
               </Item>
             </Grid>
             <Grid item xs={10}>
               {reduxData.map((cargo: formikTypes, index: number) => {
-                if (cargo.route === Routes.createCargo) {
+                if (cargo.route === Routes.onMyWay) {
                   return (
                     <CargoList
                       key={index.toString()}
                       cargo={cargo}
-                      setRoute={Routes.createCargo}
+                      setRoute={Routes.onMyWay}
                     />
                   );
                 } else {
