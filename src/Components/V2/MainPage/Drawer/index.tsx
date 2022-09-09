@@ -12,11 +12,10 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { StyledButtonDrawer } from '../../../StyledComponents/Buttons';
 
-type Anchor = 'top' | 'left' | 'bottom' | 'right';
+type Anchor = 'left' | 'bottom' | 'right';
 
 export default function TemporaryDrawer() {
   const [state, setState] = React.useState({
-    top: false,
     left: false,
     bottom: false,
     right: false,
@@ -38,7 +37,7 @@ export default function TemporaryDrawer() {
 
   const list = (anchor: Anchor) => (
     <Box
-      sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
+      sx={{ width: anchor === 'bottom' ? 'auto' : 250 }}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
@@ -73,18 +72,9 @@ export default function TemporaryDrawer() {
 
   return (
     <div>
-      {(['left', 'right', 'top', 'bottom'] as const).map((anchor) => (
+      {(['left', 'right', 'bottom'] as const).map((anchor) => (
         <React.Fragment key={anchor}>
-          <StyledButtonDrawer
-            onClick={toggleDrawer(anchor, true)}
-            style={{
-              color: '#befdff',
-              textShadow:
-                '0px 0px 10px #6ff4ff, 0 0 25px #0fc0ff, 0 0 5px #048cff',
-              fontSize: '20px',
-              fontWeight: 'bold',
-            }}
-          >
+          <StyledButtonDrawer onClick={toggleDrawer(anchor, true)}>
             {anchor}
           </StyledButtonDrawer>
           <Drawer

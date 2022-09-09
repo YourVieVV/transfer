@@ -8,6 +8,15 @@ import { CargoTransfer } from './Components/V1/CargoTransportation';
 import { BackgroundWorldMap } from './Components/StyledComponents/Wrapper';
 import { Route, Routes } from 'react-router-dom';
 import { MainPage } from './Components/V2/MainPage';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+// const theme = createTheme({
+//     palette: {
+//         primary: {
+//             main: '#e3f2fd',
+//         },
+//     },
+// });
 
 function App() {
   return (
@@ -19,6 +28,7 @@ function App() {
       validationSchema={MainSchema}
     >
       {() => (
+          // <ThemeProvider theme={theme}>
         <div className="App">
           <CssBaseline />
           <Routes>
@@ -29,6 +39,7 @@ function App() {
             <Route path="/V1" element={<CargoTransfer />} />
           </Routes>
         </div>
+          // </ThemeProvider>
       )}
     </Formik>
   );
