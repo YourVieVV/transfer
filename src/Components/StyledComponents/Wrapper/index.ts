@@ -37,5 +37,4 @@ export const BackgroundWorldMap = styled.img`
   object-fit: cover;
   width: 100vw;
   height: 100vh;
-  //opacity: 0.8;
 `;

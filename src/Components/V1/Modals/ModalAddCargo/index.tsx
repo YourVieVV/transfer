@@ -4,54 +4,42 @@ import {
   TextField,
   Modal,
   Typography,
+  Button,
   Box,
   FormControl,
   Input,
   InputAdornment,
   FormHelperText,
 } from '@mui/material';
-import { TextColor } from '../../../../StyledComponents/TextColor';
+import { TextColor } from '../../../StyledComponents/TextColor';
 import CloseIcon from '@mui/icons-material/Close';
-import { Item } from '../../../Grid/Item';
-import { SelectTransportFields } from '../../../Selects/SelectTransport';
-import { ButtonLoading } from '../../../Buttons/ButtonLoading';
-import { SelectLuxury } from '../../../Selects/SelectLuxury';
-import { SelectPriority } from '../../../Selects/SelectPriority';
+import { Item } from '../../Grid/Item';
+import { SelectTransportFields } from '../../Selects/SelectTransport';
+import { ButtonLoading } from '../../Buttons/ButtonLoading';
+import { SelectLuxury } from '../../Selects/SelectLuxury';
+import { SelectPriority } from '../../Selects/SelectPriority';
 import { useFormikContext } from 'formik';
-import { formikTypes } from '../../../../../redux/Types';
-import { modalStyle } from '../../../../StyledComponents/Modals';
-import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
-import { useAppSelector } from '../../../../../hooks';
+import { formikTypes } from '../../../../redux/Types';
+import { modalStyle } from '../../../StyledComponents/Modals';
 
-interface modalEditCargoProps {
-  cargo: formikTypes;
-}
-
-export const ModalEditCargo: FC<modalEditCargoProps> = ({ cargo }) => {
+export const ModalAddCargo: FC = () => {
   const [open, setOpen] = useState<boolean>(false);
-  const [isEdit, setIsEdit] = useState<boolean>(false);
-
-  const { values, setFieldValue, handleChange, handleBlur } =
+  const { values, handleChange, handleBlur, touched, errors, resetForm } =
     useFormikContext<formikTypes>();
+  const isEdit = false;
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   useEffect(() => {
-    setFieldValue('id', cargo.id);
-    setFieldValue('nameCargo', cargo.nameCargo);
-    setFieldValue('volume', cargo.volume);
-    setFieldValue('weight', cargo.weight);
-    setFieldValue('product', cargo.product);
-    setFieldValue('price', cargo.price);
-    setFieldValue('departure', cargo.departure);
-    setFieldValue('arrival', cargo.arrival);
-    setIsEdit(true);
+    resetForm();
   }, [open]);
 
   return (
     <div>
-      <CreateOutlinedIcon color="info" onClick={handleOpen} />
+      <Button variant="outlined" onClick={handleOpen}>
+        Добавить грузоперевозку
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -61,9 +49,10 @@ export const ModalEditCargo: FC<modalEditCargoProps> = ({ cargo }) => {
         <Box sx={modalStyle}>
           <TextColor>
             <Typography id="modal-modal-title" variant="h5" component="h2">
-              Изменение груза
+              Добавление груза
               <CloseIcon style={{ float: 'right' }} onClick={handleClose} />
             </Typography>
+
             <Grid container columns={4} justifyContent="center">
               <Grid item xs={2}>
                 <Item elevation={0}>
@@ -78,6 +67,16 @@ export const ModalEditCargo: FC<modalEditCargoProps> = ({ cargo }) => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
+                  {touched.nameCargo && errors.nameCargo && (
+                    <Typography
+                      sx={{ color: 'red' }}
+                      variant="caption"
+                      display="block"
+                      gutterBottom
+                    >
+                      {errors.nameCargo}
+                    </Typography>
+                  )}
                 </Item>
               </Grid>
               <Grid item xs={2}>
@@ -100,6 +99,16 @@ export const ModalEditCargo: FC<modalEditCargoProps> = ({ cargo }) => {
                         onChange={handleChange}
                         onBlur={handleBlur}
                       />
+                      {touched.volume && errors.volume && (
+                        <Typography
+                          sx={{ color: 'red' }}
+                          variant="caption"
+                          display="block"
+                          gutterBottom
+                        >
+                          {errors.volume}
+                        </Typography>
+                      )}
                     </FormControl>
                   </Item>
                   <Item elevation={0} sx={{ width: '50%', p: 0, mr: '25px' }}>
@@ -120,6 +129,16 @@ export const ModalEditCargo: FC<modalEditCargoProps> = ({ cargo }) => {
                         onChange={handleChange}
                         onBlur={handleBlur}
                       />
+                      {touched.weight && errors.weight && (
+                        <Typography
+                          sx={{ color: 'red' }}
+                          variant="caption"
+                          display="block"
+                          gutterBottom
+                        >
+                          {errors.weight}
+                        </Typography>
+                      )}
                     </FormControl>
                   </Item>
                 </Item>
@@ -139,6 +158,16 @@ export const ModalEditCargo: FC<modalEditCargoProps> = ({ cargo }) => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
+                  {touched.product && errors.product && (
+                    <Typography
+                      sx={{ color: 'red' }}
+                      variant="caption"
+                      display="block"
+                      gutterBottom
+                    >
+                      {errors.product}
+                    </Typography>
+                  )}
                 </Item>
               </Grid>
               <Grid item xs={2}>
@@ -161,16 +190,27 @@ export const ModalEditCargo: FC<modalEditCargoProps> = ({ cargo }) => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
+                  {touched.price && errors.price && (
+                    <Typography
+                      sx={{ color: 'red' }}
+                      variant="caption"
+                      display="block"
+                      gutterBottom
+                    >
+                      {errors.price}
+                    </Typography>
+                  )}
                 </Item>
               </Grid>
             </Grid>
+
             <Typography
               id="modal-modal-title"
               variant="h5"
               component="h2"
               sx={{ mt: 3 }}
             >
-              Изменение направления
+              Добавление направления
             </Typography>
             <Grid container columns={4} justifyContent="center">
               <Grid item xs={2}>
@@ -186,6 +226,16 @@ export const ModalEditCargo: FC<modalEditCargoProps> = ({ cargo }) => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
+                  {touched.departure && errors.departure && (
+                    <Typography
+                      sx={{ color: 'red' }}
+                      variant="caption"
+                      display="block"
+                      gutterBottom
+                    >
+                      {errors.departure}
+                    </Typography>
+                  )}
                 </Item>
               </Grid>
               <Grid item xs={2}>
@@ -201,6 +251,16 @@ export const ModalEditCargo: FC<modalEditCargoProps> = ({ cargo }) => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
+                  {touched.arrival && errors.arrival && (
+                    <Typography
+                      sx={{ color: 'red' }}
+                      variant="caption"
+                      display="block"
+                      gutterBottom
+                    >
+                      {errors.arrival}
+                    </Typography>
+                  )}
                 </Item>
               </Grid>
               <Grid item xs={2}>

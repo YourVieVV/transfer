@@ -11,15 +11,15 @@ import {
   RadioGroup,
   Radio,
 } from '@mui/material';
-import { TextColor } from '../../../../StyledComponents/TextColor';
+import { TextColor } from '../../../StyledComponents/TextColor';
 import CloseIcon from '@mui/icons-material/Close';
-import { Item } from '../../../Grid/Item';
-import { ButtonLoading } from '../../../Buttons/ButtonLoading';
+import { Item } from '../../Grid/Item';
+import { ButtonLoading } from '../../Buttons/ButtonLoading';
 import { useFormikContext } from 'formik';
-import { data, formikTypes } from '../../../../../redux/Types';
-import { modalStyle } from '../../../../StyledComponents/Modals';
+import { data, formikTypes } from '../../../../redux/Types';
+import { modalStyle } from '../../../StyledComponents/Modals';
 import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
-import { TransferList } from '../../List/TransferList';
+import { TransferList } from '../../CargoTransportation/List/TransferList';
 
 interface modalEditCargoProps {
   cargo: formikTypes;

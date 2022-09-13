@@ -12,14 +12,14 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import RestoreFromTrashOutlinedIcon from '@mui/icons-material/RestoreFromTrashOutlined';
 import { onMyWay, outFromStore } from '../../../../../redux/Action';
-import { ModalEditCargo } from '../../Modals/ModalEditCargo';
+import { ModalEditCargo } from '../../../Modals/ModalEditCargo';
 import DirectionsBoatFilledIcon from '@mui/icons-material/DirectionsBoatFilled';
 import AirplanemodeActiveIcon from '@mui/icons-material/AirplanemodeActive';
 import DirectionsBusIcon from '@mui/icons-material/DirectionsBus';
 import DirectionsSubwayIcon from '@mui/icons-material/DirectionsSubway';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import { formikTypes, data, Routes } from '../../../../../redux/Types';
-import { ModalInArchive } from '../../Modals/ModalInArchive';
+import { ModalInArchive } from '../../../Modals/ModalInArchive';
 import { useAppSelector, useAppDispatch } from '../../../../../hooks';
 
 interface cargoListProps {

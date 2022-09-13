@@ -9,6 +9,7 @@ import { BackgroundWorldMap } from './Components/StyledComponents/Wrapper';
 import { Route, Routes } from 'react-router-dom';
 import { MainPage } from './Components/V2/MainPage';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { theme } from './Components/theme';
 
 // const theme = createTheme({
 //     palette: {
@@ -28,18 +29,18 @@ function App() {
       validationSchema={MainSchema}
     >
       {() => (
-          // <ThemeProvider theme={theme}>
-        <div className="App">
-          <CssBaseline />
-          <Routes>
-            <Route path="/" element={<MainPage />} />
-          </Routes>
+        <ThemeProvider theme={theme}>
+          <div className="App">
+            <CssBaseline />
+            <Routes>
+              <Route path="/" element={<MainPage />} />
+            </Routes>
 
-          <Routes>
-            <Route path="/V1" element={<CargoTransfer />} />
-          </Routes>
-        </div>
-          // </ThemeProvider>
+            <Routes>
+              <Route path="/V1" element={<CargoTransfer />} />
+            </Routes>
+          </div>
+        </ThemeProvider>
       )}
     </Formik>
   );

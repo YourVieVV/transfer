@@ -3,7 +3,7 @@ import { UpWrapper, Wrapper } from '../../../StyledComponents/Wrapper';
 import { Box, Grid, Typography } from '@mui/material';
 import { Item } from '../../Grid/Item';
 import { TextColor } from '../../../StyledComponents/TextColor';
-import { ModalAddCargo } from '../Modals/ModalAddCargo';
+import { ModalAddCargo } from '../../Modals/ModalAddCargo';
 import { CargoList } from '../List/CargoList';
 import { useAppSelector } from '../../../../hooks';
 import { formikTypes, Routes } from '../../../../redux/Types';
