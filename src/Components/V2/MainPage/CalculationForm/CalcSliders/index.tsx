@@ -3,7 +3,7 @@ import Slider from '@mui/material/Slider';
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { Grid } from '@mui/material';
+import Grid from '@mui/material/Unstable_Grid2';
 import { VolumeUp } from '@mui/icons-material';
 import MuiInput from '@mui/material/Input';
 
@@ -70,15 +70,14 @@ export const CalcSlider: FC = () => {
     }
   };
   return (
-    <Box sx={{ width: 300 }}>
-      <Typography id="input-slider" gutterBottom>
-        Volume
-      </Typography>
-      <Grid container spacing={2} alignItems="center">
-        <Grid item>
-          <VolumeUp />
+    <Grid container spacing={1} alignItems="center">
+      <Grid container alignItems="center" xs={6}>
+        <Grid xs={12}>
+          <Typography id="input-slider" gutterBottom>
+            Вес (кг)
+          </Typography>
         </Grid>
-        <Grid item xs>
+        <Grid xs={9}>
           <PrettoSlider
             value={typeof value === 'number' ? value : 0}
             onChange={handleSliderChange}
@@ -87,7 +86,7 @@ export const CalcSlider: FC = () => {
             max={1000}
           />
         </Grid>
-        <Grid item>
+        <Grid xs={3}>
           <Input
             value={value}
             size="small"
@@ -103,6 +102,35 @@ export const CalcSlider: FC = () => {
           />
         </Grid>
       </Grid>
-    </Box>
+      <Grid container alignItems='' xs={6}>
+        <Grid xs={12}>
+          <div>Объём (м³)</div>
+        </Grid>
+        <Grid xs={9}>
+          <PrettoSlider
+            value={typeof value === 'number' ? value : 0}
+            onChange={handleSliderChange}
+            valueLabelDisplay="auto"
+            aria-labelledby="input-slider"
+            max={1000}
+          />
+        </Grid>
+        <Grid xs={3}>
+          <Input
+            value={value}
+            size="small"
+            onChange={handleInputChange}
+            onBlur={handleBlur}
+            inputProps={{
+              step: 1,
+              min: 0,
+              max: 1000,
+              type: 'number',
+              'aria-labelledby': 'input-slider',
+            }}
+          />
+        </Grid>
+      </Grid>
+    </Grid>
   );
 };
