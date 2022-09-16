@@ -7,44 +7,6 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { VolumeUp } from '@mui/icons-material';
 import MuiInput from '@mui/material/Input';
 
-const PrettoSlider = styled(Slider)({
-  color: '#5dc0fe',
-  height: 5,
-  '& .MuiSlider-track': {
-    border: 'none',
-  },
-  '& .MuiSlider-thumb': {
-    height: 21,
-    width: 21,
-    backgroundColor: '#ffffff',
-    border: '2px solid currentColor',
-    '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
-      boxShadow: 'inherit',
-    },
-    '&:before': {
-      display: 'none',
-    },
-  },
-  '& .MuiSlider-valueLabel': {
-    lineHeight: 1.2,
-    fontSize: 14,
-    background: 'unset',
-    padding: 0,
-    width: 31,
-    height: 31,
-    borderRadius: '50% 50% 50% 50%',
-    backgroundColor: '#5dc0fe',
-    transformOrigin: 'bottom left',
-    transform: 'translate(50%, -100%) rotate(-45deg) scale(0)',
-    '&:before': { display: 'none' },
-    '&.MuiSlider-valueLabelOpen': {
-      transform: 'translate(50%, -100%) rotate(-45deg) scale(1)',
-    },
-    '& > *': {
-      transform: 'rotate(45deg)',
-    },
-  },
-});
 const Input = styled(MuiInput)({
   color: '#ffffff',
   width: '50px',
@@ -71,14 +33,13 @@ export const CalcSlider: FC = () => {
   };
   return (
     <Grid container spacing={1} alignItems="center">
-      <Grid container alignItems="center" xs={6}>
+      <Grid container alignItems="center" xs={6} spacing={2}>
         <Grid xs={12}>
-          <Typography id="input-slider" gutterBottom>
-            Вес (кг)
-          </Typography>
+          <Typography id="input-slider">Вес (кг)</Typography>
         </Grid>
         <Grid xs={9}>
-          <PrettoSlider
+          <Slider
+            color="primary"
             value={typeof value === 'number' ? value : 0}
             onChange={handleSliderChange}
             valueLabelDisplay="auto"
@@ -102,12 +63,13 @@ export const CalcSlider: FC = () => {
           />
         </Grid>
       </Grid>
-      <Grid container alignItems='' xs={6}>
+      <Grid container alignItems="center" xs={6} spacing={2}>
         <Grid xs={12}>
-          <div>Объём (м³)</div>
+          <Typography id="input-slider">Объём (м³)</Typography>
         </Grid>
         <Grid xs={9}>
-          <PrettoSlider
+          <Slider
+            color={'primary'}
             value={typeof value === 'number' ? value : 0}
             onChange={handleSliderChange}
             valueLabelDisplay="auto"

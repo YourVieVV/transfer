@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
-import Button from '@mui/material/Button';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
@@ -12,11 +11,10 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { StyledButtonDrawer } from '../../../StyledComponents/Buttons';
 
-type Anchor = 'left' | 'bottom' | 'right';
+type Anchor = 'bottom' | 'right';
 
 export default function TemporaryDrawer() {
   const [state, setState] = React.useState({
-    left: false,
     bottom: false,
     right: false,
   });
@@ -70,22 +68,25 @@ export default function TemporaryDrawer() {
     </Box>
   );
 
+  const DrawerList = (drawerPosition: Anchor, buttonText: string) => (
+    <React.Fragment key={drawerPosition}>
+      <StyledButtonDrawer onClick={toggleDrawer(drawerPosition, true)} style={{width:'170px'}}>
+          <span style={{textAlign:"center"}}>{buttonText}</span>
+      </StyledButtonDrawer>
+      <Drawer
+        anchor={drawerPosition}
+        open={state[drawerPosition]}
+        onClose={toggleDrawer(drawerPosition, false)}
+      >
+        {list(drawerPosition)}
+      </Drawer>
+    </React.Fragment>
+);
+
   return (
     <div>
-      {(['left', 'right', 'bottom'] as const).map((anchor) => (
-        <React.Fragment key={anchor}>
-          <StyledButtonDrawer onClick={toggleDrawer(anchor, true)}>
-            {anchor}
-          </StyledButtonDrawer>
-          <Drawer
-            anchor={anchor}
-            open={state[anchor]}
-            onClose={toggleDrawer(anchor, false)}
-          >
-            {list(anchor)}
-          </Drawer>
-        </React.Fragment>
-      ))}
+      {DrawerList('bottom', 'Услуги')}
+      {DrawerList('right', 'О Компании')}
     </div>
   );
 }

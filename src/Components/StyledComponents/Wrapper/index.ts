@@ -1,35 +1,21 @@
-import styled from '@emotion/styled';
-import World from '../../../images/WorldMap.jpeg';
-export const Wrapper = styled.div`
-  padding: 2em 0 0 0;
-`;
+import { Box, styled } from '@mui/material';
 
-export const UpWrapper = styled.div`
-  min-height: 27vh;
-`;
+export const Wrapper = styled('div')({
+  padding: '2em 0 0 0',
+});
 
-// export const BackgroundWorldMapWrapper = styled.div`
-//   position: relative;
-//   overflow: hidden;
-//   width: 100%;
-//   height: 100%;
-// `;
-//
-// export const BackgroundWorldMap = styled.img`
-//   position: absolute;
-//   width: 100%;
-//   height: 100%;
-//   display: block;
-//   transform: scale(1.3);
-// `;
-export const BackgroundWorldMapWrapper = styled.div`
-  position: relative;
-  overflow: hidden;
-  width: 100vw;
-  height: 100vh;
-`;
+export const UpWrapper = styled('div')({
+  minHeight: '27vh',
+});
 
-export const BackgroundWorldMap = styled.img`
+export const BackgroundWorldMapWrapper = styled(Box)({
+  position: 'relative',
+  overflow: 'hidden',
+  width: '100vw',
+  height: '100vh',
+});
+
+export const BackgroundWorldMap = styled('img')`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -37,4 +23,5 @@ export const BackgroundWorldMap = styled.img`
   object-fit: cover;
   width: 100vw;
   height: 100vh;
+  z-index: -1;
 `;

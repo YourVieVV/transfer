@@ -1,8 +1,10 @@
 import { createTheme } from '@mui/material/styles';
 
 export const palette = {
+  white: '#ffffff',
   azure: {
     main: '#5dfefe',
+    slider: '#5de6fe',
   },
 };
 
@@ -70,6 +72,61 @@ export const theme = createTheme({
                 borderColor: palette.azure.main,
               },
             },
+          },
+        },
+      ],
+    },
+    MuiSlider: {
+      variants: [
+        {
+          props: { color: 'primary' },
+          style: {
+            color: palette.azure.slider,
+            height: 5,
+            '& .MuiSlider-track': {
+              border: 'none',
+            },
+            '& .MuiSlider-thumb': {
+              height: 21,
+              width: 21,
+              backgroundColor: palette.white,
+              border: '2px solid currentColor',
+              '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
+                boxShadow: 'inherit',
+              },
+              '&:before': {
+                display: 'none',
+              },
+            },
+            '& .MuiSlider-valueLabel': {
+              lineHeight: 1.2,
+              fontSize: 14,
+              background: 'unset',
+              padding: 0,
+              width: 31,
+              height: 31,
+              borderRadius: '50% 50% 50% 50%',
+              backgroundColor: palette.azure.slider,
+              transformOrigin: 'bottom left',
+              transform: 'translate(50%, -100%) rotate(-45deg) scale(0)',
+              '&:before': { display: 'none' },
+              '&.MuiSlider-valueLabelOpen': {
+                transform: 'translate(50%, -100%) rotate(-45deg) scale(1)',
+              },
+              '& > *': {
+                transform: 'rotate(45deg)',
+              },
+            },
+          },
+        },
+      ],
+    },
+    MuiTypography: {
+      variants: [
+        {
+          props: { id: 'input-slider' },
+          style: {
+            color: palette.azure.main,
           },
         },
       ],

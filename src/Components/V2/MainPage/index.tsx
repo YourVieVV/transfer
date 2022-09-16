@@ -5,18 +5,21 @@ import {
 } from '../../StyledComponents/Wrapper';
 import World from '../../../images/WorldMap.jpg';
 import TemporaryDrawer from './Drawer';
-import { Box, TextField } from '@mui/material';
-import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Unstable_Grid2';
+import { Box } from '@mui/material';
 import { CalculationForm } from './CalculationForm';
+import { ContentWrapper } from './ContentWrapper';
 
 export const MainPage = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <BackgroundWorldMapWrapper>
         <BackgroundWorldMap src={World} />
-        <TemporaryDrawer />
-        <CalculationForm />
+          <ContentWrapper>
+              <TemporaryDrawer />
+              <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                  <CalculationForm />
+              </div>
+          </ContentWrapper>
       </BackgroundWorldMapWrapper>
     </Box>
   );
