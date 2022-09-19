@@ -9,7 +9,7 @@ import MuiInput from '@mui/material/Input';
 
 const Input = styled(MuiInput)({
   color: '#ffffff',
-  width: '50px',
+  width: '52px',
 });
 export const CalcSlider: FC = () => {
   const [value, setValue] = React.useState<
@@ -33,11 +33,9 @@ export const CalcSlider: FC = () => {
   };
   return (
     <Grid container spacing={1} alignItems="center">
-      <Grid container alignItems="center" xs={6} spacing={2}>
-        <Grid xs={12}>
-          <Typography id="input-slider">Вес (кг)</Typography>
-        </Grid>
-        <Grid xs={9}>
+
+        <Grid xs={6} >
+            <Typography id="input-slider">Вес (кг)</Typography>
           <Slider
             color="primary"
             value={typeof value === 'number' ? value : 0}
@@ -46,8 +44,6 @@ export const CalcSlider: FC = () => {
             aria-labelledby="input-slider"
             max={1000}
           />
-        </Grid>
-        <Grid xs={3}>
           <Input
             value={value}
             size="small"
@@ -62,12 +58,9 @@ export const CalcSlider: FC = () => {
             }}
           />
         </Grid>
-      </Grid>
-      <Grid container alignItems="center" xs={6} spacing={2}>
-        <Grid xs={12}>
-          <Typography id="input-slider">Объём (м³)</Typography>
-        </Grid>
-        <Grid xs={9}>
+
+        <Grid xs={6}>
+            <Typography id="input-slider">Объём (м³)</Typography>
           <Slider
             color={'primary'}
             value={typeof value === 'number' ? value : 0}
@@ -76,8 +69,6 @@ export const CalcSlider: FC = () => {
             aria-labelledby="input-slider"
             max={1000}
           />
-        </Grid>
-        <Grid xs={3}>
           <Input
             value={value}
             size="small"
@@ -92,7 +83,7 @@ export const CalcSlider: FC = () => {
             }}
           />
         </Grid>
-      </Grid>
+
     </Grid>
   );
 };

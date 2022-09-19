@@ -82,7 +82,10 @@ export const theme = createTheme({
           props: { color: 'primary' },
           style: {
             color: palette.azure.slider,
-            height: 5,
+            height: '5px',
+            width: '120px',
+            marginRight:'15px',
+            padding:'4px',
             '& .MuiSlider-track': {
               border: 'none',
             },

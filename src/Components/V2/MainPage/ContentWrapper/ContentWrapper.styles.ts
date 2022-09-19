@@ -1,11 +1,13 @@
-import { styled } from "@mui/material";
+import { styled } from '@mui/material';
 
 export const Wrapper = styled('div')({
-    display: 'flex',
-    justifyContent: 'center',
-    width: '100vw',
-})
+
+  width: '100vw',
+});
 
 export const StyledContentWrapper = styled('div')({
-    width: 'calc(100vw - 400px)',
-})
+  width: 'calc(80vw)',
+  height:'100vh',
+  display: 'inline-flex',
+
+});

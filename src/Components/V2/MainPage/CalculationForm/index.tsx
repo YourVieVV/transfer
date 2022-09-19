@@ -5,7 +5,7 @@ import { CalcFields } from './CalcFields';
 
 export const CalculationForm: FC = () => {
   return (
-    <Box sx={{ width: '480px', margin: '50px 100px' }}>
+    <Box>
       <CalcFields />
       <CalcSlider />
     </Box>

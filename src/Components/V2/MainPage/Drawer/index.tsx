@@ -70,8 +70,11 @@ export default function TemporaryDrawer() {
 
   const DrawerList = (drawerPosition: Anchor, buttonText: string) => (
     <React.Fragment key={drawerPosition}>
-      <StyledButtonDrawer onClick={toggleDrawer(drawerPosition, true)} style={{width:'170px'}}>
-          <span style={{textAlign:"center"}}>{buttonText}</span>
+      <StyledButtonDrawer
+        onClick={toggleDrawer(drawerPosition, true)}
+        style={{ width: '170px' }}
+      >
+        <span style={{ textAlign: 'center' }}>{buttonText}</span>
       </StyledButtonDrawer>
       <Drawer
         anchor={drawerPosition}
@@ -81,7 +84,7 @@ export default function TemporaryDrawer() {
         {list(drawerPosition)}
       </Drawer>
     </React.Fragment>
-);
+  );
 
   return (
     <div>
