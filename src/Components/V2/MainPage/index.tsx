@@ -10,6 +10,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { CalculationForm } from './CalculationForm';
 import { ContentWrapper } from './ContentWrapper';
 import { ImageSlider } from './ImageSlider';
+import Example from "./ImageSlider/Slider2";
 
 export const MainPage = () => {
   return (
@@ -31,8 +32,8 @@ export const MainPage = () => {
           </Grid>
           <Grid xs={4}>
 
-              <ImageSlider />
-
+              {/*<ImageSlider />*/}
+            <Example />
           </Grid>
 
           <Grid xs={4}>
