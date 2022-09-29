@@ -11,6 +11,7 @@ const Input = styled(MuiInput)({
   color: '#ffffff',
   width: '52px',
 });
+
 export const CalcSlider: FC = () => {
   const [value, setValue] = React.useState<
     number | string | Array<number | string>
@@ -32,58 +33,57 @@ export const CalcSlider: FC = () => {
     }
   };
   return (
-    <Grid container spacing={1} alignItems="center">
-
-        <Grid xs={6} >
-            <Typography id="input-slider">Вес (кг)</Typography>
-          <Slider
-            color="primary"
-            value={typeof value === 'number' ? value : 0}
-            onChange={handleSliderChange}
-            valueLabelDisplay="auto"
-            aria-labelledby="input-slider"
-            max={1000}
-          />
-          <Input
-            value={value}
-            size="small"
-            onChange={handleInputChange}
-            onBlur={handleBlur}
-            inputProps={{
-              step: 1,
-              min: 0,
-              max: 1000,
-              type: 'number',
-              'aria-labelledby': 'input-slider',
-            }}
-          />
-        </Grid>
-
-        <Grid xs={6}>
-            <Typography id="input-slider">Объём (м³)</Typography>
-          <Slider
-            color={'primary'}
-            value={typeof value === 'number' ? value : 0}
-            onChange={handleSliderChange}
-            valueLabelDisplay="auto"
-            aria-labelledby="input-slider"
-            max={1000}
-          />
-          <Input
-            value={value}
-            size="small"
-            onChange={handleInputChange}
-            onBlur={handleBlur}
-            inputProps={{
-              step: 1,
-              min: 0,
-              max: 1000,
-              type: 'number',
-              'aria-labelledby': 'input-slider',
-            }}
-          />
-        </Grid>
-
-    </Grid>
+    <Box sx={{width:'100%', display: 'flex', justifyContent: 'center', gap:'60px'}}>
+        <div>
+        <Typography id="defaultText">Вес (кг)</Typography>
+        <Slider
+          color="primary"
+          value={typeof value === 'number' ? value : 0}
+          onChange={handleSliderChange}
+          valueLabelDisplay="auto"
+          aria-labelledby="input-slider"
+          max={1000}
+          style={{width:'160px'}}
+        />
+        <Input
+          value={value}
+          size="small"
+          onChange={handleInputChange}
+          onBlur={handleBlur}
+          inputProps={{
+            step: 1,
+            min: 0,
+            max: 1000,
+            type: 'number',
+            'aria-labelledby': 'input-slider',
+          }}
+        />
+        </div>
+      <div>
+        <Typography id="defaultText">Объём (м³)</Typography>
+        <Slider
+          color={'primary'}
+          value={typeof value === 'number' ? value : 0}
+          onChange={handleSliderChange}
+          valueLabelDisplay="auto"
+          aria-labelledby="input-slider"
+          max={1000}
+          style={{width:'160px'}}
+        />
+        <Input
+          value={value}
+          size="small"
+          onChange={handleInputChange}
+          onBlur={handleBlur}
+          inputProps={{
+            step: 1,
+            min: 0,
+            max: 1000,
+            type: 'number',
+            'aria-labelledby': 'input-slider',
+          }}
+        />
+      </div>
+    </Box>
   );
 };

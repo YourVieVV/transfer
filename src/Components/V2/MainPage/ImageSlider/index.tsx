@@ -7,16 +7,16 @@ export const ImageSlider = () => {
   const [images, setImages] = React.useState(null);
 
   React.useEffect(() => {
-    let shouldCancel = false;
+    const shouldCancel = false;
 
     const call = async () => {
       const response = await axios.get(
         'https://google-photos-album-demo2.glitch.me/4eXXxxG3rYwQVf948'
       );
-      console.log('==========>response = ' , response)
-        console.log('==========>shouldCancel = ' , shouldCancel)
+      console.log('==========>response = ', response);
+      console.log('==========>shouldCancel = ', shouldCancel);
       if (!shouldCancel && response.data && response.data.length > 0) {
-          console.log('==========> = ' )
+        console.log('==========> = ');
         setImages(
           response.data.map((url) => ({
             original: `${url}=w1024`,
@@ -25,8 +25,15 @@ export const ImageSlider = () => {
       }
     };
     call();
-
   }, []);
 
-  return images ? <ImageGallery items={images} showFullscreenButton={false} showPlayButton={false} showBullets={true} showThumbnails={false}/> : null;
+  return images ? (
+    <ImageGallery
+      items={images}
+      showFullscreenButton={false}
+      showPlayButton={false}
+      showBullets={true}
+      showThumbnails={false}
+    />
+  ) : null;
 };

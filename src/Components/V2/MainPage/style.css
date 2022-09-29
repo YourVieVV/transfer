@@ -12,3 +12,11 @@
     background: #efefef;
     text-align: center;
 }
+.react-slideshow-container+ul.indicators .each-slideshow-indicator:before {
+    background: white;
+    width: 8px;
+    height: 8px
+}
+.react-slideshow-container+ul.indicators {
+    margin: -50px;
+}

@@ -5,6 +5,7 @@ export const palette = {
   azure: {
     main: '#5dfefe',
     slider: '#5de6fe',
+    button:'#43b0c5',
   },
 };
 
@@ -84,8 +85,8 @@ export const theme = createTheme({
             color: palette.azure.slider,
             height: '5px',
             width: '120px',
-            marginRight:'15px',
-            padding:'4px',
+            marginRight: '15px',
+            padding: '4px',
             '& .MuiSlider-track': {
               border: 'none',
             },
@@ -130,9 +131,27 @@ export const theme = createTheme({
           props: { id: 'input-slider' },
           style: {
             color: palette.azure.main,
+            fontWeight:'bold',
+          },
+        },
+        {
+          props: { id: 'defaultText' },
+          style: {
+            color: palette.azure.main,
+            fontWeight:'bold',
           },
         },
       ],
     },
+    MuiButton:{
+      variants:[{
+        props: { id: 'button-main' },
+        style: {
+          '&:hover':{
+            backgroundColor: palette.azure.button,
+          },
+        },
+      },]
+    }
   },
 });
