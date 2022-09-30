@@ -6,33 +6,45 @@ import EditIcon from '@mui/icons-material/Edit';
 
 export const AdditionalQuehsion: FC = () => {
     return (
-        <Box sx={{width:'40%'}}>
-            <Typography id='defaultText' variant="h6" gutterBottom>
+        <Box sx={{width:'100%', display:'flex', flexWrap:'wrap', justifyContent:'center', rowGap:'20px'}}>
+            <Typography id='defaultText' variant="h6" gutterBottom style={{width:'100%'}}>
                 Заполнили документы, но информация поменялась?
             </Typography>
-            <Typography id='defaultText' variant="subtitle2" gutterBottom>
+
+            <div style={{width:'100%', display:'flex', flexWrap:'wrap', justifyContent:'center', columnGap:'40px'}}>
+            <div style={{width:'40%'}}>
+            <Typography id='defaultText' variant="subtitle2" gutterBottom style={{textAlign:'left'}}>
                 Изменение получателя
             </Typography>
-            <Typography id='defaultText' variant="subtitle2" gutterBottom>
+
+            <Typography id='defaultText' variant="subtitle2" gutterBottom style={{textAlign:'left'}}>
                 Изменение пункта назначения
             </Typography>
-            <Typography id='defaultText' variant="subtitle2" gutterBottom>
+            </div>
+        <div style={{width:'40%'}}>
+            <Typography id='defaultText' variant="subtitle2" gutterBottom style={{textAlign:'left'}}>
                 Изменение пункта доставки
             </Typography>
-            <Typography id='defaultText' variant="subtitle2" gutterBottom>
+
+            <Typography id='defaultText' variant="subtitle2" gutterBottom style={{textAlign:'left'}}>
                 Изменение типа перевозки
             </Typography>
-            <Typography id='defaultText' variant="subtitle2" gutterBottom>
+        </div>
+            <div style={{width:'86%'}}>
+            <Typography id='defaultText' variant="subtitle2" gutterBottom style={{textAlign:'left'}}>
                 Изменение бухгалтерских документов
             </Typography>
+                </div>
 
-
-            <Typography id='defaultText' variant="subtitle2" gutterBottom>
+            <div style={{width:'100%'}}>
+            <Typography id='defaultText' variant="subtitle2" gutterBottom style={{textAlign:'left'}}>
                 Хотите, что бы мы взяли дополнительный груз по пути?(добавить снакбар)
             </Typography>
-            <Typography id='defaultText' variant="subtitle2" gutterBottom>
-                Изменение маршрута следования груза
+            <Typography id='defaultText' variant="subtitle2" gutterBottom style={{textAlign:'left'}}>
+                Хотите, что бы мы изменили маршрута следования груза?
             </Typography>
+                </div>
+            </div>
         </Box>
     );
 };

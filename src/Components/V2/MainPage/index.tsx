@@ -3,7 +3,7 @@ import {
   BackgroundWorldMap,
   BackgroundWorldMapWrapper,
 } from '../../StyledComponents/Wrapper';
-import World from '../../../images/WorldMap.jpg';
+import World from '../../../images/WorldMapDark.jpg';
 import TemporaryDrawer from './Drawer';
 import { Box } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
