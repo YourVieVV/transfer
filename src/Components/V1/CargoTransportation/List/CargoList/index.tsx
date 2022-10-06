@@ -18,7 +18,7 @@ import AirplanemodeActiveIcon from '@mui/icons-material/AirplanemodeActive';
 import DirectionsBusIcon from '@mui/icons-material/DirectionsBus';
 import DirectionsSubwayIcon from '@mui/icons-material/DirectionsSubway';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
-import { formikTypes, data, Routes } from '../../../../../redux/Types';
+import { formikTypes, data, Routes } from '../../../../../Types';
 import { ModalInArchive } from '../../../Modals/ModalInArchive';
 import { useAppSelector, useAppDispatch } from '../../../../../hooks';
 

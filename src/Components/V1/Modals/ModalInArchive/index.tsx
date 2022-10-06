@@ -16,7 +16,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { Item } from '../../Grid/Item';
 import { ButtonLoading } from '../../Buttons/ButtonLoading';
 import { useFormikContext } from 'formik';
-import { data, formikTypes } from '../../../../redux/Types';
+import { data, formikTypes } from '../../../../Types';
 import { modalStyle } from '../../../StyledComponents/Modals';
 import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 import { TransferList } from '../../CargoTransportation/List/TransferList';

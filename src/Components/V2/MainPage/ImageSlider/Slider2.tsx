@@ -6,7 +6,7 @@ import Cars from '../../../../images/Cars.png';
 import Man from '../../../../images/Man.png';
 import Vector from '../../../../images/Vector.png';
 import Delivery from '../../../../images/Delivery.png';
-import { StyledImageSlider } from '../../../StyledComponents/Wrapper';
+import { StyledImageSlider } from '../../../StyledComponents/Wrappers';
 
 const Example = () => {
   const images = [Cars, Delivery, Vector, Man];

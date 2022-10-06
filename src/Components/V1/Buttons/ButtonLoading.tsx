@@ -5,7 +5,7 @@ import SendIcon from '@mui/icons-material/Send';
 import { addInStore, editInStore, inArchive } from '../../../redux/Action';
 import { useFormikContext } from 'formik';
 import { v4 as uuidv4 } from 'uuid';
-import { formikTypes, data, Routes } from '../../../redux/Types';
+import { formikTypes, data, Routes } from '../../../Types';
 import { loadStyle } from '../../StyledComponents/Modals';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
 import { Item } from '../Grid/Item';

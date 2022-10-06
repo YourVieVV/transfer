@@ -6,6 +6,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Unstable_Grid2';
 import { VolumeUp } from '@mui/icons-material';
 import MuiInput from '@mui/material/Input';
+import {FlexWrapper} from "../../../../StyledComponents/Wrappers/FlexWrappers";
 
 const Input = styled(MuiInput)({
   color: '#ffffff',
@@ -33,7 +34,7 @@ export const CalcSlider: FC = () => {
     }
   };
   return (
-    <Box sx={{width:'100%', display: 'flex', justifyContent: 'center', gap:'60px'}}>
+    <FlexWrapper justifyContent='center' gap='60px'>
         <div>
         <Typography id="defaultText">Вес (кг)</Typography>
         <Slider
@@ -84,6 +85,6 @@ export const CalcSlider: FC = () => {
           }}
         />
       </div>
-    </Box>
+    </FlexWrapper>
   );
 };

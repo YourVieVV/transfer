@@ -9,7 +9,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
-import { formikTypes } from '../../../../../redux/Types';
+import { formikTypes } from '../../../../../Types';
 
 interface TransferListProps {
   cargo: formikTypes;

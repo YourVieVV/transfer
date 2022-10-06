@@ -12,7 +12,7 @@ import AirplanemodeActiveIcon from '@mui/icons-material/AirplanemodeActive';
 import DirectionsBusIcon from '@mui/icons-material/DirectionsBus';
 import DirectionsSubwayIcon from '@mui/icons-material/DirectionsSubway';
 import { useFormikContext } from 'formik';
-import { formikTypes } from '../../../redux/Types';
+import { formikTypes } from '../../../Types';
 
 export const SelectTransportFields: FC = () => {
   const [currency, setCurrency] = useState<string>('');

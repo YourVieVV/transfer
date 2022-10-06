@@ -1,3 +1,5 @@
+import {ReactNode} from "react";
+
 export const ADD_IN_STORE = 'ADD_IN_STORE';
 export const OUT_FROM_STORE = 'OUT_FROM_STORE';
 export const EDIT_IN_STORE = 'EDIT_IN_STORE';
@@ -51,5 +53,15 @@ export type formikTypes = {
   comment: string;
   rating: number;
 };
+
+export type FlexWrapperType = {
+  width?:string;
+  flexWrap?:'wrap' | 'nowrap';
+  justifyContent?:string;
+  alignItems?:string;
+  gap?:string;
+  rowGap?:string;
+  columnGap?:string;
+}
 
 export type data = any;

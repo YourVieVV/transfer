@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 import { Box, Grid, Typography } from '@mui/material';
-import { UpWrapper, Wrapper } from '../../../StyledComponents/Wrapper';
+import { UpWrapper, Wrapper } from '../../../StyledComponents/Wrappers';
 import { TextColor } from '../../../StyledComponents/TextColor';
 import { Item } from '../../Grid/Item';
 import { CargoList } from '../List/CargoList';
 import { useAppSelector } from '../../../../hooks';
-import { formikTypes, Routes } from '../../../../redux/Types';
+import { formikTypes, Routes } from '../../../../Types';
 
 export const TransferDirection: FC = () => {
   const reduxData = useAppSelector((state) => state.reducer);

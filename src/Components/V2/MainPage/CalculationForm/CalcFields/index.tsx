@@ -1,10 +1,11 @@
 import React, { FC } from 'react';
 import {Box, TextField } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
+import {FlexWrapper} from "../../../../StyledComponents/Wrappers/FlexWrappers";
 
 export const CalcFields: FC = () => {
   return (
-    <Box sx={{display: 'flex', justifyContent: 'center', width:'100%', gap: '40px',}}>
+    <FlexWrapper justifyContent='center' gap='40px'>
       <TextField
         name="nameCargo"
         label="Откуда"
@@ -13,7 +14,7 @@ export const CalcFields: FC = () => {
         color="primary"
         margin="dense"
         value={'kljkjl'}
-        style={{ width:'40%' }}
+        sx={{ width:'40%' }}
       />
       <TextField
         name="nameCargo"
@@ -23,8 +24,8 @@ export const CalcFields: FC = () => {
         color="primary"
         margin="dense"
         value={'kljkjl'}
-        style={{ width:'40%' }}
+        sx={{ width:'40%' }}
       />
-    </Box>
+    </FlexWrapper>
   );
 };

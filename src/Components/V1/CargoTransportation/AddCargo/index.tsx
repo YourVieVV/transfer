@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
-import { UpWrapper, Wrapper } from '../../../StyledComponents/Wrapper';
+import { UpWrapper, Wrapper } from '../../../StyledComponents/Wrappers';
 import { Box, Grid, Typography } from '@mui/material';
 import { Item } from '../../Grid/Item';
 import { TextColor } from '../../../StyledComponents/TextColor';
 import { ModalAddCargo } from '../../Modals/ModalAddCargo';
 import { CargoList } from '../List/CargoList';
 import { useAppSelector } from '../../../../hooks';
-import { formikTypes, Routes } from '../../../../redux/Types';
+import { formikTypes, Routes } from '../../../../Types';
 
 export const AddCargo: FC = () => {
   const reduxData = useAppSelector((state) => state.reducer);

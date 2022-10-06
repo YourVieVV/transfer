@@ -5,7 +5,7 @@ import {
   ON_MY_WAY,
   IN_ARCHIVE,
   formikTypes,
-} from './Types';
+} from '../Types';
 
 export const addInStore = (payload: formikTypes) => ({
   type: ADD_IN_STORE,

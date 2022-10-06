@@ -18,7 +18,7 @@ import { ButtonLoading } from '../../Buttons/ButtonLoading';
 import { SelectLuxury } from '../../Selects/SelectLuxury';
 import { SelectPriority } from '../../Selects/SelectPriority';
 import { useFormikContext } from 'formik';
-import { formikTypes } from '../../../../redux/Types';
+import { formikTypes } from '../../../../Types';
 import { modalStyle } from '../../../StyledComponents/Modals';
 import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
 import { useAppSelector } from '../../../../hooks';

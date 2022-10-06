@@ -3,7 +3,7 @@ import { Box, Tab } from '@mui/material';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Wrapper } from '../../StyledComponents/Wrapper';
+import { Wrapper } from '../../StyledComponents/Wrappers';
 
 export const Header: FC = () => {
   const navigate = useNavigate();

@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import Box from '@mui/material/Box';
 import { Autocomplete, TextField, Typography } from '@mui/material';
 import {ChangeDirection} from "../ChangeDirection";
-import {BlockWrapper} from "../ContentWrapper/BlockWrapper";
+import {BlockWrapper} from "../ContentWrappers/BlockWrapper";
 
 
 export const SearchTrackCargoForm: FC = () => {

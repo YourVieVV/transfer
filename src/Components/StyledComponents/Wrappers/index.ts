@@ -5,6 +5,10 @@ export const Wrapper = styled('div')({
   padding: '2em 0 0 0',
 });
 
+export const WidthWrapper = styled('div')<{ width: string }>((props) => ({
+  width: props.width,
+}));
+
 export const UpWrapper = styled('div')({
   minHeight: '27vh',
 });

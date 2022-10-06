@@ -6,7 +6,7 @@ import {
   IN_ARCHIVE,
   formikTypes,
   data,
-} from './Types';
+} from '../Types';
 import { PayloadAction } from '@reduxjs/toolkit';
 
 const defaultState: data = [];
