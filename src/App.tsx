@@ -9,6 +9,7 @@ import { Route, Routes } from 'react-router-dom';
 import { MainPage } from './Components/V2/MainPage';
 import { ThemeProvider } from '@mui/material/styles';
 import { theme } from './Components/theme';
+import {LoginPage} from "./Components/loginPage";
 
 function App() {
   return (
@@ -28,8 +29,13 @@ function App() {
             </Routes>
 
             <Routes>
-              <Route path="/V1" element={<CargoTransfer />} />
+              <Route path="/old/*" element={<CargoTransfer />} />
             </Routes>
+
+            <Routes>
+              <Route path="/login" element={<LoginPage />} />
+            </Routes>
+
           </div>
         </ThemeProvider>
       )}

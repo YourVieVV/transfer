@@ -20,16 +20,16 @@ export const BackgroundWorldMapWrapper = styled(Box)({
   height: '100vh',
 });
 
-export const BackgroundWorldMap = styled('img')({
+export const BackgroundWorldMap = styled('img')<{ scale:string; }>(({scale}) => ({
   position: 'absolute',
   top: '50%',
   left: '50%',
-  transform: 'translate(-50%, -50%) scale(1.3)',
+  transform: `translate(-50%, -50%) ${scale}`,
   objectFit: 'cover',
   width: '100vw',
   height: '100vh',
   zIndex: '-1',
-});
+}));
 
 export const StyledImageSlider = styled(Slide)({
   '& .each-slideshow-indicator': {

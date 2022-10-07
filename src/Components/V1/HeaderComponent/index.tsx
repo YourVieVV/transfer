@@ -23,18 +23,18 @@ export const Header: FC = () => {
             <TabList onChange={handleChange} aria-label="lab API tabs example">
               <Tab
                 label="Отправленные"
-                value="/V1/transfer"
-                onClick={() => navigate('/V1/transfer')}
+                value="/old/transfer"
+                onClick={() => navigate('/old/transfer')}
               />
               <Tab
                 label="Создание/Отправка"
-                value="/V1/addCargo"
-                onClick={() => navigate('/V1/addCargo')}
+                value="/old/addCargo"
+                onClick={() => navigate('/old/addCargo')}
               />
               <Tab
                 label="Архив"
-                value="/V1/archive"
-                onClick={() => navigate('/V1/archive')}
+                value="/old/archive"
+                onClick={() => navigate('/old/archive')}
               />
             </TabList>
           </Box>

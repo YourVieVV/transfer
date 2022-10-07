@@ -18,7 +18,7 @@ export const MainPage = () => {
   return (
     <Box sx={{ flexGrow: 1, width: '100vw', height: '100vh' }}>
       <BackgroundWorldMapWrapper>
-        <BackgroundWorldMap src={World} />
+        <BackgroundWorldMap src={World} scale='scale(1.3)'/>
         <ContentWrapper>
           {/*<img style={{ width:'70px', height:'70px',}} src={Logo}/>*/}
           {/*<div style={{ width:'100px', height:'100px','backgroundImage': `url(${Logo})`, backgroundSize:'100% 100%', }} />*/}

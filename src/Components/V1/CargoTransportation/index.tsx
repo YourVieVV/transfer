@@ -13,9 +13,9 @@ export const CargoTransfer = () => {
         <div>
           <Header />
           <Routes>
-            <Route path="/V1/transfer" element={<TransferDirection />} />
-            <Route path="/V1/addCargo" element={<AddCargo />} />
-            <Route path="/V1/archive" element={<Archive />} />
+            <Route path="/transfer" element={<TransferDirection />} />
+            <Route path="/addCargo" element={<AddCargo />} />
+            <Route path="/archive" element={<Archive />} />
           </Routes>
         </div>
       </Box>

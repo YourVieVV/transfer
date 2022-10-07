@@ -56,6 +56,7 @@ export type formikTypes = {
 
 export type FlexWrapperType = {
   width?:string;
+  height?:string;
   flexWrap?:'wrap' | 'nowrap';
   justifyContent?:string;
   alignItems?:string;

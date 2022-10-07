@@ -4,6 +4,7 @@ import {FlexWrapperType} from "../../../../Types";
 export const FlexWrapper = styled('div')<FlexWrapperType>((props) => ({
     display: 'flex',
     width: '100%',
+    height:props.height,
     justifyContent: props.justifyContent,
     gap:props.gap,
     flexWrap:props.flexWrap,
