@@ -1,14 +1,16 @@
 import React, { FC } from 'react';
-import { Box, TextField } from '@mui/material';
-import Grid from '@mui/material/Unstable_Grid2';
 import { FlexWrapper } from '../../../../StyledComponents/Wrappers/FlexWrappers';
+import {
+  SlideInLeftField,
+  SlideInRightField,
+} from '../../../../../Animations/StyledComponentAnimation';
 
-export const CalcFields: FC = () => {
+export const LoginFields: FC = () => {
   return (
     <FlexWrapper justifyContent="center" gap="40px">
-      <TextField
+      <SlideInLeftField
         name="nameCargo"
-        label="Откуда"
+        label="Логин"
         type="search"
         variant="outlined"
         color="primary"
@@ -16,14 +18,14 @@ export const CalcFields: FC = () => {
         value={'kljkjl'}
         sx={{ width: '40%' }}
       />
-      <TextField
+      <SlideInRightField
         name="nameCargo"
-        label="Куда"
+        label="Пароль"
         type="search"
         variant="outlined"
         color="primary"
         margin="dense"
-        value={'kljkjl'}
+        value={''}
         sx={{ width: '40%' }}
       />
     </FlexWrapper>

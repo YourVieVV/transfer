@@ -18,6 +18,7 @@
     "@types/react-dom": "^17.0.14",
     "formik": "^2.2.9",
     "react": "^18.0.0",
+    "react-animations": "^1.0.0",
     "react-dom": "^18.0.0",
     "react-image-gallery": "^1.2.9",
     "react-redux": "^7.2.6",
@@ -32,6 +33,7 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
+    "@types/react-animations": "^1.0.0",
     "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.18.0",
     "@typescript-eslint/parser": "^5.18.0",

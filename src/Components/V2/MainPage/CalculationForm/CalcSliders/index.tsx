@@ -6,7 +6,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Unstable_Grid2';
 import { VolumeUp } from '@mui/icons-material';
 import MuiInput from '@mui/material/Input';
-import {FlexWrapper} from "../../../../StyledComponents/Wrappers/FlexWrappers";
+import { FlexWrapper } from '../../../../StyledComponents/Wrappers/FlexWrappers';
 
 const Input = styled(MuiInput)({
   color: '#ffffff',
@@ -34,8 +34,8 @@ export const CalcSlider: FC = () => {
     }
   };
   return (
-    <FlexWrapper justifyContent='center' gap='60px'>
-        <div>
+    <FlexWrapper justifyContent="center" gap="60px">
+      <div>
         <Typography id="defaultText">Вес (кг)</Typography>
         <Slider
           color="primary"
@@ -44,7 +44,7 @@ export const CalcSlider: FC = () => {
           valueLabelDisplay="auto"
           aria-labelledby="input-slider"
           max={1000}
-          style={{width:'160px'}}
+          style={{ width: '160px' }}
         />
         <Input
           value={value}
@@ -59,7 +59,7 @@ export const CalcSlider: FC = () => {
             'aria-labelledby': 'input-slider',
           }}
         />
-        </div>
+      </div>
       <div>
         <Typography id="defaultText">Объём (м³)</Typography>
         <Slider
@@ -69,7 +69,7 @@ export const CalcSlider: FC = () => {
           valueLabelDisplay="auto"
           aria-labelledby="input-slider"
           max={1000}
-          style={{width:'160px'}}
+          style={{ width: '160px' }}
         />
         <Input
           value={value}

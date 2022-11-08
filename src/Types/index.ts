@@ -1,4 +1,4 @@
-import {ReactNode} from "react";
+import { ReactNode } from 'react';
 
 export const ADD_IN_STORE = 'ADD_IN_STORE';
 export const OUT_FROM_STORE = 'OUT_FROM_STORE';
@@ -10,6 +10,16 @@ export enum Routes {
   createCargo = 'createCargo',
   onMyWay = 'onMyWay',
   inArchive = 'inArchive',
+}
+
+export enum TEXT {
+  PASSWORD = 'Забыли пароль?',
+  HELP = 'Не получается зарегистрироваться?',
+}
+
+export enum MESSAGES {
+  PITY = '( ･ω･)☞ Очень жаль ',
+  BEST_HELP = 'Не всегда ситуации складываеются как мы хотим, это нужно принять (─‿‿─)',
 }
 
 export const initialValueFormik = {
@@ -55,14 +65,14 @@ export type formikTypes = {
 };
 
 export type FlexWrapperType = {
-  width?:string;
-  height?:string;
-  flexWrap?:'wrap' | 'nowrap';
-  justifyContent?:string;
-  alignItems?:string;
-  gap?:string;
-  rowGap?:string;
-  columnGap?:string;
-}
+  width?: string;
+  height?: string;
+  flexWrap?: 'wrap' | 'nowrap';
+  justifyContent?: string;
+  alignItems?: string;
+  gap?: string;
+  rowGap?: string;
+  columnGap?: string;
+};
 
 export type data = any;
