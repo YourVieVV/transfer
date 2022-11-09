@@ -36,6 +36,7 @@ export const ZoomInUpButton = styled(Button)(() => ({
 export const ZoomInDownDivTypography = styled('div')({
   animation: `${timeAnimation.twoSec} ${slideInDownAnimation}`,
   display: 'flex',
+  height:'20px',
 });
 
 export const WobbleWrapperButton = styled('div')<{ isAnimation: boolean }>(

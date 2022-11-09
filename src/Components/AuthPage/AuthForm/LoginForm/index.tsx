@@ -19,7 +19,7 @@ export const LoginForm: FC = ({ setter }) => {
   const [timeoutState, setTimeoutState] = useState(false);
   setTimeout(() => setButtonAnimation(false), 1000);
   return (
-    <FlexWrapper flexWrap="wrap">
+    <FlexWrapper flexWrap="wrap" gap="10px">
       <LoginFields />
 
       <FlexItem width="100%" justifyContent="space-around">

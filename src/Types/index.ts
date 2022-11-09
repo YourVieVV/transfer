@@ -19,7 +19,7 @@ export enum TEXT {
 
 export enum MESSAGES {
   PITY = '( ･ω･)☞ Очень жаль ',
-  BEST_HELP = 'Не всегда ситуации складываеются как мы хотим, это нужно принять (─‿‿─)',
+  BEST_HELP = 'Не всегда ситуации складываеются так, как мы хотим, это нужно принять (─‿‿─)',
 }
 
 export const initialValueFormik = {
