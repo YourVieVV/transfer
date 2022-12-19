@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import Box from '@mui/material/Box';
-import { Autocomplete, Fab, TextField, Typography } from '@mui/material';
-import EditIcon from '@mui/icons-material/Edit';
+import { Typography } from '@mui/material';
 
 export const AdditionalQuehsion: FC = () => {
   return (
@@ -18,7 +17,7 @@ export const AdditionalQuehsion: FC = () => {
         id="defaultText"
         variant="h6"
         gutterBottom
-        style={{ width: '100%' }}
+        sx={{ width: '90%', textAlign: 'center' }}
       >
         Заполнили документы, но информация поменялась?
       </Typography>

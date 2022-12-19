@@ -2,11 +2,11 @@ import React, { FC } from 'react';
 import Slider from '@mui/material/Slider';
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Unstable_Grid2';
-import { VolumeUp } from '@mui/icons-material';
 import MuiInput from '@mui/material/Input';
-import { FlexWrapper } from '../../../../StyledComponents/Wrappers/FlexWrappers';
+import {
+    FlexItem,
+    FlexWrapper,
+} from '../../../../StyledComponents/Wrappers/FlexWrappers';
 
 const Input = styled(MuiInput)({
   color: '#ffffff',
@@ -34,35 +34,40 @@ export const CalcSlider: FC = () => {
     }
   };
   return (
-    <FlexWrapper justifyContent="center" gap="60px">
-      <div>
-        <Typography id="defaultText">Вес (кг)</Typography>
-        <Slider
-          color="primary"
-          value={typeof value === 'number' ? value : 0}
-          onChange={handleSliderChange}
-          valueLabelDisplay="auto"
-          aria-labelledby="input-slider"
-          max={1000}
-          style={{ width: '160px' }}
-        />
-        <Input
-          name="weight"
-          value={value}
-          size="small"
-          onChange={handleInputChange}
-          onBlur={handleBlur}
-          inputProps={{
-            step: 1,
-            min: 0,
-            max: 1000,
-            type: 'number',
-            'aria-labelledby': 'input-slider',
-          }}
-        />
-      </div>
-      <div>
-        <Typography id="defaultText">Объём (м³)</Typography>
+    <FlexWrapper justifyContent="center" gap="40px">
+      <FlexItem width={'215px'} flexWrap={'wrap'}>
+      <Typography id="defaultText" sx={{ width: '100%' }}>
+        Вес (кг)
+      </Typography>
+      <Slider
+        color="primary"
+        value={typeof value === 'number' ? value : 0}
+        onChange={handleSliderChange}
+        valueLabelDisplay="auto"
+        aria-labelledby="input-slider"
+        max={1000}
+        sx={{ width: '100%' }}
+      />
+      <Input
+        name="weight"
+        value={value}
+        size="small"
+        onChange={handleInputChange}
+        onBlur={handleBlur}
+        inputProps={{
+          step: 1,
+          min: 0,
+          max: 1000,
+          type: 'number',
+          'aria-labelledby': 'input-slider',
+        }}
+        sx={{ marginLeft: 'auto' }}
+      />
+      </FlexItem>
+      <FlexItem width={'215px'} flexWrap={'wrap'}>
+        <Typography id="defaultText" style={{ width: '100%' }}>
+          Объём (м³)
+        </Typography>
         <Slider
           color={'primary'}
           value={typeof value === 'number' ? value : 0}
@@ -70,7 +75,7 @@ export const CalcSlider: FC = () => {
           valueLabelDisplay="auto"
           aria-labelledby="input-slider"
           max={1000}
-          style={{ width: '160px' }}
+          sx={{ width: '100%' }}
         />
         <Input
           name="volume"
@@ -85,8 +90,9 @@ export const CalcSlider: FC = () => {
             type: 'number',
             'aria-labelledby': 'input-slider',
           }}
+          sx={{ marginLeft: 'auto' }}
         />
-      </div>
+      </FlexItem>
     </FlexWrapper>
   );
 };

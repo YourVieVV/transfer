@@ -16,6 +16,7 @@ import { SearchTrackCargoForm } from './SearchTrackCargoForm';
 import { AdditionalQuehsion } from './AdditionalQuehsion';
 import {
   FlexItem,
+  FlexItemTestOverflow,
   FlexWrapper,
 } from '../../StyledComponents/Wrappers/FlexWrappers';
 import { useNavigate } from 'react-router-dom';
@@ -59,11 +60,11 @@ export const MainPage = () => {
             <WidthWrapper width="35%">
               <ImageSlider />
             </WidthWrapper>
-            <FlexItem width="45%" rowGap="60px" flexWrap="wrap">
+            <FlexItemTestOverflow width="45%" rowGap="60px" flexWrap="wrap">
               <CalculationForm />
               <SearchTrackCargoForm />
               <AdditionalQuehsion />
-            </FlexItem>
+            </FlexItemTestOverflow>
           </FlexWrapper>
         </ContentWrapper>
       </BackgroundWorldMapWrapper>

@@ -16,7 +16,11 @@ export const SearchTrackCargoForm: FC = () => {
         flexWrap: 'wrap',
       }}
     >
-      <Typography id="defaultText" style={{ width: '100%' }} variant="h6">
+      <Typography
+        id="defaultText"
+        sx={{ width: '100%', textAlign: 'center' }}
+        variant="h6"
+      >
         Хотите узнать?
       </Typography>
       <div style={{ width: '40%' }}>

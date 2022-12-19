@@ -1,6 +1,5 @@
-import { Box, keyframes, styled, TextField } from '@mui/material';
+import { Box, styled } from '@mui/material';
 import { Slide } from 'react-slideshow-image';
-import { rotateInDownLeft, zoomInDown, slideInLeft } from 'react-animations';
 
 export const Wrapper = styled('div')({
   padding: '2em 0 0 0',
@@ -37,6 +36,7 @@ export const BackgroundWorldMap = styled('img')<{ scale: string }>(
 export const ImgLogo = styled('img')({
   width: '150px',
   height: '145px',
+  marginLeft: '80px',
   '&:hover': {
     cursor: 'pointer',
   },
@@ -48,12 +48,4 @@ export const StyledImageSlider = styled(Slide)({
       background: 'white',
     },
   },
-});
-
-export const StyledDiv = styled('div')({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  backgroundSize: 'cover',
-  height: '60vh',
 });
