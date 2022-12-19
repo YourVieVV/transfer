@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import { CssBaseline } from '@mui/material';
 import { initialValueFormik } from './Types';
 import { Formik } from 'formik';

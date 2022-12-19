@@ -62,6 +62,13 @@ export type formikTypes = {
   isDone: boolean;
   comment: string;
   rating: number;
+  trackNumber: number;
+  toCargo: string;
+  fromCalc: string;
+  repeatPassword: string;
+  password: string;
+  email: string;
+  login: string;
 };
 
 export type FlexWrapperType = {

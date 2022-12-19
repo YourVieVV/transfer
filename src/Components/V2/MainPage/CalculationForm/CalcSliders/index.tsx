@@ -47,6 +47,7 @@ export const CalcSlider: FC = () => {
           style={{ width: '160px' }}
         />
         <Input
+          name='weight'
           value={value}
           size="small"
           onChange={handleInputChange}
@@ -72,6 +73,7 @@ export const CalcSlider: FC = () => {
           style={{ width: '160px' }}
         />
         <Input
+          name='volume'
           value={value}
           size="small"
           onChange={handleInputChange}

@@ -1,29 +1,36 @@
 import React, { FC } from 'react';
-import { Box, TextField } from '@mui/material';
-import Grid from '@mui/material/Unstable_Grid2';
+import { TextField } from '@mui/material';
 import { FlexWrapper } from '../../../../StyledComponents/Wrappers/FlexWrappers';
+import {useFormikContext} from "formik";
+import {formikTypes} from "../../../../../Types";
 
 export const CalcFields: FC = () => {
+    const { values, handleChange, handleBlur } =
+        useFormikContext<formikTypes>();
   return (
     <FlexWrapper justifyContent="center" gap="40px">
       <TextField
-        name="nameCargo"
+        name="fromCalc"
         label="Откуда"
         type="search"
         variant="outlined"
         color="primary"
         margin="dense"
-        value={'kljkjl'}
+        value={values.fromCalc}
+        onChange={handleChange}
+        onBlur={handleBlur}
         sx={{ width: '40%' }}
       />
       <TextField
-        name="nameCargo"
+        name="toCalc"
         label="Куда"
         type="search"
         variant="outlined"
         color="primary"
         margin="dense"
-        value={'kljkjl'}
+        value={values.toCargo}
+        onChange={handleChange}
+        onBlur={handleBlur}
         sx={{ width: '40%' }}
       />
     </FlexWrapper>
