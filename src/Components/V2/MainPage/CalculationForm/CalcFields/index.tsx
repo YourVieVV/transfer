@@ -1,12 +1,11 @@
 import React, { FC } from 'react';
 import { TextField } from '@mui/material';
 import { FlexWrapper } from '../../../../StyledComponents/Wrappers/FlexWrappers';
-import {useFormikContext} from "formik";
-import {formikTypes} from "../../../../../Types";
+import { useFormikContext } from 'formik';
+import { formikTypes } from '../../../../../Types';
 
 export const CalcFields: FC = () => {
-    const { values, handleChange, handleBlur } =
-        useFormikContext<formikTypes>();
+  const { values, handleChange, handleBlur } = useFormikContext<formikTypes>();
   return (
     <FlexWrapper justifyContent="center" gap="40px">
       <TextField

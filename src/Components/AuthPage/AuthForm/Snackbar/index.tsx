@@ -4,7 +4,11 @@ import SentimentDissatisfiedIcon from '@mui/icons-material/SentimentDissatisfied
 import { ZoomInUpButton } from '../../../../Animations/StyledComponentAnimation';
 import { MESSAGES, TEXT } from '../../../../Types';
 
-export const SimpleSnackbar = ({ text }) => {
+type SimpleSnackbarProps = {
+  text: string;
+};
+
+export const SimpleSnackbar: React.FC<SimpleSnackbarProps> = ({ text }) => {
   const [open, setOpen] = React.useState(false);
 
   const handleClick = () => {
@@ -30,10 +34,7 @@ export const SimpleSnackbar = ({ text }) => {
     </React.Fragment>
   );
   const message = text === TEXT.PASSWORD ? MESSAGES.PITY : MESSAGES.BEST_HELP;
-  console.log(
-    '==========>SentimentDissatisfiedIcon = ',
-    SentimentDissatisfiedIcon
-  );
+
   return (
     <div>
       <ZoomInUpButton style={{ color: 'white' }} onClick={handleClick}>

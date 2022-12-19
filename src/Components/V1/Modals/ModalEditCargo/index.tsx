@@ -21,7 +21,7 @@ import { useFormikContext } from 'formik';
 import { formikTypes } from '../../../../Types';
 import { modalStyle } from '../../../StyledComponents/Modals';
 import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
-import { useAppSelector } from '../../../../hooks';
+import { useAppSelector } from '../../../../hooks/reduxHooks';
 
 interface modalEditCargoProps {
   cargo: formikTypes;

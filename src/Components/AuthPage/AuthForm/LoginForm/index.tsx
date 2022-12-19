@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import {
   SlideInLeftField,
   WobbleWrapperButton,
@@ -12,12 +12,13 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 import { LoginFields } from './LoginFields';
 import { SimpleSnackbar } from '../Snackbar';
 import { TEXT } from '../../../../Types';
+import { useButtonAnimationTimeout } from '../../../../hooks/useButtonAnimationTimeout';
 
-export const LoginForm: FC = ({ setter }) => {
+export const LoginForm: FC = () => {
   const navigate = useNavigate();
-  const [buttonAnimation, setButtonAnimation] = useState(false);
-  const [timeoutState, setTimeoutState] = useState(false);
-  setTimeout(() => setButtonAnimation(false), 1000);
+
+  const { buttonAnimation, setButtonAnimation } = useButtonAnimationTimeout();
+
   return (
     <FlexWrapper flexWrap="wrap" gap="10px">
       <LoginFields />
@@ -29,8 +30,7 @@ export const LoginForm: FC = ({ setter }) => {
             variant="contained"
             onClick={() => {
               setButtonAnimation(true);
-              setter(true);
-              navigate('/');
+              // navigate('/');
             }}
           >
             Авторизоваться!

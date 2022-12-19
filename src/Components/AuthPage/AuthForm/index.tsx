@@ -1,27 +1,12 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 
-import { LoginFields } from './LoginForm/LoginFields';
-import {
-  FlexItem,
-  FlexWrapper,
-} from '../../StyledComponents/Wrappers/FlexWrappers';
-import {
-  WobbleWrapperButton,
-  ZoomInDownDivTypography,
-  ZoomInDownTypography,
-  ZoomInUpButton,
-  ZoomInUpButton1,
-} from '../../../Animations/StyledComponentAnimation';
-import { Button, IconButton, Link, Snackbar, Typography } from '@mui/material';
-import SentimentDissatisfiedIcon from '@mui/icons-material/SentimentDissatisfied';
-import { Route, Routes, useNavigate } from 'react-router-dom';
-import { CargoTransfer } from '../../V1/CargoTransportation';
+import { FlexWrapper } from '../../StyledComponents/Wrappers/FlexWrappers';
+import { Route, Routes } from 'react-router-dom';
 import { AuthHeader } from './AuthHeader';
-import { SimpleSnackbar } from './Snackbar';
 import { LoginForm } from './LoginForm';
 import { RegisterForm } from './RegisterForm';
 
-export const AuthForm: FC = ({ setter }) => {
+export const AuthForm: FC = () => {
   return (
     <FlexWrapper
       width="100%"
@@ -32,8 +17,8 @@ export const AuthForm: FC = ({ setter }) => {
     >
       <AuthHeader />
       <Routes>
-        <Route path="/login" element={<LoginForm setter={setter} />} />
-        <Route path="/register" element={<RegisterForm setter={setter} />} />
+        <Route path="/login" element={<LoginForm />} />
+        <Route path="/register" element={<RegisterForm />} />
       </Routes>
     </FlexWrapper>
   );

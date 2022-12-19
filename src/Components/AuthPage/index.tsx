@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import {
   BackgroundWorldMap,
   BackgroundWorldMapWrapper,
@@ -9,39 +9,34 @@ import {
   FlexItem,
   FlexWrapper,
 } from '../StyledComponents/Wrappers/FlexWrappers';
-import { AuthForm, LoginForm } from './AuthForm';
-import { Test } from '../../Animations/StyledComponentAnimation';
-import { Button, styled } from '@mui/material';
-import { Route, Routes } from 'react-router-dom';
-import { LoginFields } from './AuthForm/LoginForm/LoginFields';
+import { AuthForm } from './AuthForm';
 
-export const AAA = styled('button')(({ isAnimation }) => ({
-  position: 'absolute',
-  transition: '1s',
-}));
+// ---------- Что бы кнопка убегала ------------
+// export const AAA = styled('button')(({ isAnimation }) => ({
+//   position: 'absolute',
+//   transition: '1s',
+// }));
+// ---------- Что бы кнопка убегала ------------
 
 export const AuthPage = () => {
-  const [animation, setAnimation] = useState(false);
-  const qwe = useRef<any>(null);
-  useEffect(() => {
-    console.log('==========>qwe.current = ', qwe.current);
-
-    const random = (min, max) => {
-      console.log('==========> = ');
-      const rand = min + Math.random() * (max - min + 1);
-      return Math.floor(rand);
-    };
-
-    qwe.current?.addEventListener(
-      'mouseenter',
-      () => {
-        console.log('==========> = ');
-        qwe.current.style.left = `${random(0, 90)}%`;
-        qwe.current.style.top = `${random(0, 90)}%`;
-      },
-      false
-    );
-  }, []);
+  // ---------- Что бы кнопка убегала ------------
+  // const qwe = useRef<any>(null);
+  // useEffect(() => {
+  //   const random = (min: number, max: number) => {
+  //     const rand = min + Math.random() * (max - min + 1);
+  //     return Math.floor(rand);
+  //   };
+  //
+  //   qwe.current?.addEventListener(
+  //     'mouseenter',
+  //     () => {
+  //       qwe.current.style.left = `${random(0, 90)}%`;
+  //       qwe.current.style.top = `${random(0, 90)}%`;
+  //     },
+  //     false
+  //   );
+  // }, []);
+  // ---------- Что бы кнопка убегала ------------
 
   return (
     <div>
@@ -50,20 +45,23 @@ export const AuthPage = () => {
         <ContentWrapper>
           <FlexWrapper gap="30px" justifyContent="center" height="100vh">
             <FlexItem width="770px" alignItems="center">
-              <AuthForm setter={setAnimation} />
+              <AuthForm />
             </FlexItem>
           </FlexWrapper>
-          <div
-            style={{
-              width: '100vw',
-              height: '100vh',
-              backgroundColor: `rgb(124,115,207)`,
-            }}
-          >
-            <AAA ref={qwe} id={'btn'}>
-              CLICK
-            </AAA>
-          </div>
+
+          {/*---------- Что бы кнопка убегала ------------*/}
+          {/*<div*/}
+          {/*  style={{*/}
+          {/*    width: '100vw',*/}
+          {/*    height: '100vh',*/}
+          {/*    backgroundColor: `rgb(124,115,207)`,*/}
+          {/*  }}*/}
+          {/*>*/}
+          {/*  <AAA ref={qwe} id={'btn'}>*/}
+          {/*    CLICK*/}
+          {/*  </AAA>*/}
+          {/*</div>*/}
+          {/*---------- Что бы кнопка убегала ------------*/}
         </ContentWrapper>
       </BackgroundWorldMapWrapper>
     </div>

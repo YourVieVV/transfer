@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
   BackgroundWorldMap,
   BackgroundWorldMapWrapper,
@@ -11,26 +11,27 @@ import TemporaryDrawer from './Drawer';
 import { Box } from '@mui/material';
 import { CalculationForm } from './CalculationForm';
 import { ContentWrapper } from './ContentWrappers';
-import Example from './ImageSlider/Slider2';
+import { ImageSlider } from './ImageSlider';
 import { SearchTrackCargoForm } from './SearchTrackCargoForm';
 import { AdditionalQuehsion } from './AdditionalQuehsion';
 import {
   FlexItem,
   FlexWrapper,
 } from '../../StyledComponents/Wrappers/FlexWrappers';
-import { Test2 } from '../../../Animations/StyledComponentAnimation';
 import { useNavigate } from 'react-router-dom';
 
 export const MainPage = () => {
-  const [animation, setAnimation] = useState(true);
+  // const [animation, setAnimation] = useState(true);
 
-  useEffect(() => {
-    if (window.performance) {
-      if (performance.navigation.type == 1) {
-        setAnimation(false);
-      } else setAnimation(true);
-    }
-  }, []);
+  // --------- Проверка на изменение урл адреса -----------
+  // useEffect(() => {
+  //   if (window.performance) {
+  //     if (performance.navigation.type == 1) {
+  //       setAnimation(false);
+  //     } else setAnimation(true);
+  //   }
+  // }, []);
+
   const navigate = useNavigate();
   return (
     <Box sx={{ flexGrow: 1, width: '100vw', height: '100vh' }}>
@@ -56,7 +57,7 @@ export const MainPage = () => {
               </div>
             </FlexItem>
             <WidthWrapper width="35%">
-              <Example />
+              <ImageSlider />
             </WidthWrapper>
             <FlexItem width="45%" rowGap="60px" flexWrap="wrap">
               <CalculationForm />

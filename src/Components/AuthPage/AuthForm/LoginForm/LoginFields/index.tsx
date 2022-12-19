@@ -4,12 +4,11 @@ import {
   SlideInLeftField,
   SlideInRightField,
 } from '../../../../../Animations/StyledComponentAnimation';
-import {useFormikContext} from "formik";
-import {formikTypes} from "../../../../../Types";
+import { useFormikContext } from 'formik';
+import { formikTypes } from '../../../../../Types';
 
 export const LoginFields: FC = () => {
-    const { values, handleChange, handleBlur } =
-        useFormikContext<formikTypes>();
+  const { values, handleChange, handleBlur } = useFormikContext<formikTypes>();
   return (
     <FlexWrapper justifyContent="center" gap="40px">
       <SlideInLeftField

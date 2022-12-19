@@ -1,43 +1,23 @@
-import React from 'react';
-import { CssBaseline } from '@mui/material';
-import { initialValueFormik } from './Types';
-import { Formik } from 'formik';
-import { MainSchema } from './Components/V1/ValidationShema';
-import { CargoTransfer } from './Components/V1/CargoTransportation';
-import { Route, Routes } from 'react-router-dom';
-import { MainPage } from './Components/V2/MainPage';
-import { ThemeProvider } from '@mui/material/styles';
-import { theme } from './Components/theme';
-import { AuthPage } from './Components/AuthPage';
+import React, { Fragment } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { store, persistor } from './redux/Store';
+import { PersistGate } from 'redux-persist/integration/react';
+import { Transfer } from './Components/Transfer';
 
 function App() {
   return (
-    <Formik
-      initialValues={initialValueFormik}
-      onSubmit={(values) => {
-        console.log(values);
-      }}
-      validationSchema={MainSchema}
-    >
-      {() => (
-        <ThemeProvider theme={theme}>
-          <div className="App">
-            <CssBaseline />
-            <Routes>
-              <Route path="/" element={<MainPage />} />
-            </Routes>
-
-            <Routes>
-              <Route path="/old/*" element={<CargoTransfer />} />
-            </Routes>
-
-            <Routes>
-              <Route path="/auth/*" element={<AuthPage />} />
-            </Routes>
-          </div>
-        </ThemeProvider>
-      )}
-    </Formik>
+    <Fragment>
+      {/*@ts-ignore*/}
+      <Provider store={store}>
+        {/*@ts-ignore*/}
+        <PersistGate loading={null} persistor={persistor}>
+          <Router>
+            <Transfer />
+          </Router>
+        </PersistGate>
+      </Provider>
+    </Fragment>
   );
 }
 

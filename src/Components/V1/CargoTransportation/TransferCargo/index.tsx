@@ -4,7 +4,7 @@ import { UpWrapper, Wrapper } from '../../../StyledComponents/Wrappers';
 import { TextColor } from '../../../StyledComponents/TextColor';
 import { Item } from '../../Grid/Item';
 import { CargoList } from '../List/CargoList';
-import { useAppSelector } from '../../../../hooks';
+import { useAppSelector } from '../../../../hooks/reduxHooks';
 import { formikTypes, Routes } from '../../../../Types';
 
 export const TransferDirection: FC = () => {

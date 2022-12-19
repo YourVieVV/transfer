@@ -5,7 +5,7 @@ import { Item } from '../../Grid/Item';
 import { TextColor } from '../../../StyledComponents/TextColor';
 import { ModalAddCargo } from '../../Modals/ModalAddCargo';
 import { CargoList } from '../List/CargoList';
-import { useAppSelector } from '../../../../hooks';
+import { useAppSelector } from '../../../../hooks/reduxHooks';
 import { formikTypes, Routes } from '../../../../Types';
 
 export const AddCargo: FC = () => {

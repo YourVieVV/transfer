@@ -20,7 +20,10 @@ import DirectionsSubwayIcon from '@mui/icons-material/DirectionsSubway';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import { formikTypes, data, Routes } from '../../../../../Types';
 import { ModalInArchive } from '../../../Modals/ModalInArchive';
-import { useAppSelector, useAppDispatch } from '../../../../../hooks';
+import {
+  useAppSelector,
+  useAppDispatch,
+} from '../../../../../hooks/reduxHooks';
 
 interface cargoListProps {
   cargo: formikTypes;

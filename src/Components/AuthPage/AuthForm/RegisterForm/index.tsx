@@ -1,6 +1,5 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import {
-  SlideInLeftField,
   WobbleWrapperButton,
   ZoomInUpButton,
 } from '../../../../Animations/StyledComponentAnimation';
@@ -8,16 +7,17 @@ import {
   FlexItem,
   FlexWrapper,
 } from '../../../StyledComponents/Wrappers/FlexWrappers';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { SimpleSnackbar } from '../Snackbar';
 import { RegisterFields } from './RegisterFields';
 import { TEXT } from '../../../../Types';
+import { useButtonAnimationTimeout } from '../../../../hooks/useButtonAnimationTimeout';
 
-export const RegisterForm: FC = ({ setter }) => {
+export const RegisterForm: FC = () => {
   const navigate = useNavigate();
-  const [buttonAnimation, setButtonAnimation] = useState(false);
-  const [timeoutState, setTimeoutState] = useState(false);
+  const { buttonAnimation, setButtonAnimation } = useButtonAnimationTimeout();
+
   setTimeout(() => setButtonAnimation(false), 1000);
   return (
     <FlexWrapper flexWrap="wrap" justifyContent="center" gap="10px">
@@ -30,8 +30,7 @@ export const RegisterForm: FC = ({ setter }) => {
             variant="contained"
             onClick={() => {
               setButtonAnimation(true);
-              setter(true);
-              navigate('/');
+              // navigate('/');
             }}
           >
             Зарегистрироваться!

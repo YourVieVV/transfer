@@ -1,39 +1,52 @@
-import React from 'react';
-import axios from 'axios';
-import 'react-image-gallery/styles/css/image-gallery.css';
-import ImageGallery from 'react-image-gallery';
+import React, { useRef } from 'react';
+import { SlideshowRef } from 'react-slideshow-image';
+import 'react-slideshow-image/dist/styles.css';
+import '../style.css';
+import Cars from '../../../../images/Cars.png';
+import Man from '../../../../images/Man.png';
+import Vector from '../../../../images/Vector.png';
+import Delivery from '../../../../images/Delivery.png';
+import { StyledImageSlider } from '../../../StyledComponents/Wrappers';
 
 export const ImageSlider = () => {
-  const [images, setImages] = React.useState(null);
+  const images = [Cars, Delivery, Vector, Man];
 
-  React.useEffect(() => {
-    const shouldCancel = false;
+  const slideRef = useRef<SlideshowRef>(null);
 
-    const call = async () => {
-      const response = await axios.get(
-        'https://google-photos-album-demo2.glitch.me/4eXXxxG3rYwQVf948'
-      );
-      console.log('==========>response = ', response);
-      console.log('==========>shouldCancel = ', shouldCancel);
-      if (!shouldCancel && response.data && response.data.length > 0) {
-        console.log('==========> = ');
-        setImages(
-          response.data.map((url) => ({
-            original: `${url}=w1024`,
-          }))
-        );
-      }
-    };
-    call();
-  }, []);
-
-  return images ? (
-    <ImageGallery
-      items={images}
-      showFullscreenButton={false}
-      showPlayButton={false}
-      showBullets={true}
-      showThumbnails={false}
-    />
-  ) : null;
+  return (
+    <StyledImageSlider indicators={true} ref={slideRef}>
+      <div className="each-slide-effect">
+        <div
+          style={{
+            backgroundImage: `url(${images[0]})`,
+            backgroundSize: '100% 100%',
+          }}
+        />
+      </div>
+      <div className="each-slide-effect">
+        <div
+          style={{
+            backgroundImage: `url(${images[1]})`,
+            backgroundSize: '100% 100%',
+          }}
+        />
+      </div>
+      <div className="each-slide-effect">
+        <div
+          style={{
+            backgroundImage: `url(${images[2]})`,
+            backgroundSize: '100% 100%',
+          }}
+        />
+      </div>
+      <div className="each-slide-effect">
+        <div
+          style={{
+            backgroundImage: `url(${images[3]})`,
+            backgroundSize: '100% 100%',
+          }}
+        />
+      </div>
+    </StyledImageSlider>
+  );
 };
