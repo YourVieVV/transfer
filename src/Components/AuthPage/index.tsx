@@ -10,6 +10,9 @@ import {
   FlexWrapper,
 } from '../StyledComponents/Wrappers/FlexWrappers';
 import { AuthForm } from './AuthForm';
+import {initialValueFormik} from "../../Types";
+import {MainSchema} from "../V1/ValidationShema";
+import { Formik } from 'formik';
 
 // ---------- Что бы кнопка убегала ------------
 // export const AAA = styled('button')(({ isAnimation }) => ({
@@ -39,6 +42,14 @@ export const AuthPage = () => {
   // ---------- Что бы кнопка убегала ------------
 
   return (
+      <Formik
+          initialValues={initialValueFormik}
+          onSubmit={(values) => {
+            console.log(values);
+          }}
+          validationSchema={MainSchema}
+      >
+        {() => (
     <div>
       <BackgroundWorldMapWrapper>
         <BackgroundWorldMap src={Map} scale="scale(1)" />
@@ -65,5 +76,7 @@ export const AuthPage = () => {
         </ContentWrapper>
       </BackgroundWorldMapWrapper>
     </div>
+  )}
+</Formik>
   );
 };

@@ -18,6 +18,11 @@ export const RegisterForm: FC = () => {
   const navigate = useNavigate();
   const { buttonAnimation, setButtonAnimation } = useButtonAnimationTimeout();
 
+  const handleRegistration = () => {
+    setButtonAnimation(true);
+    // navigate('/');
+  }
+
   setTimeout(() => setButtonAnimation(false), 1000);
   return (
     <FlexWrapper flexWrap="wrap" justifyContent="center" gap="10px">
@@ -28,10 +33,7 @@ export const RegisterForm: FC = () => {
         <WobbleWrapperButton isAnimation={buttonAnimation}>
           <ZoomInUpButton
             variant="contained"
-            onClick={() => {
-              setButtonAnimation(true);
-              // navigate('/');
-            }}
+            onClick={handleRegistration}
           >
             Зарегистрироваться!
           </ZoomInUpButton>

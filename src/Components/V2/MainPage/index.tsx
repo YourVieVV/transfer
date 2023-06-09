@@ -20,6 +20,9 @@ import {
   FlexWrapper,
 } from '../../StyledComponents/Wrappers/FlexWrappers';
 import { useNavigate } from 'react-router-dom';
+import {initialValueFormik} from "../../../Types";
+import {MainSchema} from "../../V1/ValidationShema";
+import { Formik } from 'formik';
 
 export const MainPage = () => {
   // const [animation, setAnimation] = useState(true);
@@ -35,6 +38,14 @@ export const MainPage = () => {
 
   const navigate = useNavigate();
   return (
+      <Formik
+          initialValues={initialValueFormik}
+          onSubmit={(values) => {
+            console.log(values);
+          }}
+          validationSchema={MainSchema}
+      >
+        {() => (
     <Box sx={{ flexGrow: 1, width: '100vw', height: '100vh' }}>
       <BackgroundWorldMapWrapper>
         <BackgroundWorldMap src={World} scale="scale(1.3)" />
@@ -69,5 +80,7 @@ export const MainPage = () => {
         </ContentWrapper>
       </BackgroundWorldMapWrapper>
     </Box>
+        )}
+      </Formik>
   );
 };

@@ -11,13 +11,32 @@ import {
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import { LoginFields } from './LoginFields';
 import { SimpleSnackbar } from '../Snackbar';
-import { TEXT } from '../../../../Types';
+import {formikTypes, ILogin, TEXT} from '../../../../Types';
 import { useButtonAnimationTimeout } from '../../../../hooks/useButtonAnimationTimeout';
+import {useFormikContext} from "formik";
+import {useAppDispatch} from "../../../../hooks/newReduxHook";
+import { fetchRelatedPersons} from "../../../../newRedux/reduxSlice/userSlice";
+import {userAuthApi} from "../../../../newRedux/services/UserService";
 
 export const LoginForm: FC = () => {
+    const dispatch = useAppDispatch();
   const navigate = useNavigate();
-
   const { buttonAnimation, setButtonAnimation } = useButtonAnimationTimeout();
+
+    const { values, handleChange, handleBlur } = useFormikContext<formikTypes>();
+
+  const [loginUser, {}] = userAuthApi.useFetchLoginDataMutation();
+
+  const handleLogin = async () => {
+      // dispatch(fetchRelatedPersons());
+      setButtonAnimation(true);
+      // navigate('/');
+      const loginData:ILogin =     {
+          name:values.login,
+          password:values.password
+      }
+      await loginUser({body:loginData})
+  }
 
   return (
     <FlexWrapper flexWrap="wrap" gap="10px">
@@ -28,10 +47,7 @@ export const LoginForm: FC = () => {
         <WobbleWrapperButton isAnimation={buttonAnimation}>
           <ZoomInUpButton
             variant="contained"
-            onClick={() => {
-              setButtonAnimation(true);
-              // navigate('/');
-            }}
+            onClick={handleLogin}
           >
             Авторизоваться!
           </ZoomInUpButton>
